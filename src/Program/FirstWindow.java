@@ -1,0 +1,155 @@
+package Program;
+
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.Insets;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
+
+public class FirstWindow extends JFrame{
+	private JTextField tFQuickSearch;
+	// Atributos de la clase
+	// JPanels:
+	private JPanel pMenuMaterial;
+	private JPanel pQuickSearch;
+	private JPanel pCentral;
+	private JPanel pPedidos;
+	private JPanel pEntrega;
+	private JPanel pStock;
+	private JPanel pLastEntregas;
+	
+	// PQuickSearch:
+	private JLabel lblQuickSearch;
+	private JButton btnEntrada;
+	private JButton btnSalida;
+	private JButton btnAlmacen;
+	private JButton btnPrestamos;
+	private JButton btnSolicitudes;
+	private JButton btnTrabajadores;
+	private JLabel lblPortatil;
+	private JTextPane textPane;
+	private JTextPane textPane_1;
+	
+	// Constructor vacío de la clase
+	public FirstWindow() {
+		// ** Nuestra ventana:
+		this.setTitle("GSM - Gestión de Stock Material");
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE); // Cuando cerramos con la X, el programa sigue en ejecución, con esta línea lo paramos
+		this.setSize(800,600); //Tamaño de la ventana
+		this.setLocationRelativeTo(null); // Esto hace que se centre la ventana
+		
+		// Configurando panel Menú Material
+		pMenuMaterial = 	new JPanel();
+		pMenuMaterial.setLayout(new GridBagLayout());
+		
+		
+		// Ahora ya podemos agregar objetos al panel
+		// Botón entrada
+		btnEntrada = new JButton("Entrada");
+		GridBagConstraints cBtnEntrada = new GridBagConstraints();
+		cBtnEntrada.gridx = 0;
+		cBtnEntrada.gridy = 0;
+		cBtnEntrada.fill = GridBagConstraints.HORIZONTAL;
+		cBtnEntrada.insets = new Insets(0, 0, 5, 0);
+		pMenuMaterial.add(btnEntrada, cBtnEntrada);
+		// Botón salida
+		GridBagConstraints cBtnSalida = new GridBagConstraints(); 
+		btnSalida = new JButton("Salida");
+		cBtnSalida.gridx = 0;
+		cBtnSalida.gridy = 1;
+		cBtnSalida.fill = GridBagConstraints.HORIZONTAL;
+		cBtnSalida.insets = new Insets(0, 0, 5, 0);
+		pMenuMaterial.add(btnSalida, cBtnSalida);
+		// Botón Almacén
+		btnAlmacen = new JButton("Almacén");
+		GridBagConstraints cBtnAlmacen = new GridBagConstraints();
+		cBtnAlmacen.gridx = 0;
+		cBtnAlmacen.gridy = 2;
+		cBtnAlmacen.fill = GridBagConstraints.HORIZONTAL;
+		cBtnAlmacen.insets = new Insets(0, 0, 5, 0);
+		pMenuMaterial.add(btnAlmacen, cBtnAlmacen);
+		// Botón Préstamos
+		btnPrestamos = new JButton("Pr\u00E9stamos");
+		GridBagConstraints cBtnPrestamos = new GridBagConstraints();
+		cBtnPrestamos.gridx = 0;
+		cBtnPrestamos.gridy = 3;
+		cBtnPrestamos.fill = GridBagConstraints.HORIZONTAL;
+		cBtnPrestamos.insets = new Insets(0, 0, 5, 0);
+		pMenuMaterial.add(btnPrestamos, cBtnPrestamos);
+		// Botón Solicitudes
+		btnSolicitudes = new JButton("Solicitudes");
+		GridBagConstraints cBtnSolicitudes = new GridBagConstraints();
+		cBtnSolicitudes.gridx = 0;
+		cBtnSolicitudes.gridy = 4;
+		cBtnSolicitudes.fill = GridBagConstraints.HORIZONTAL;
+		cBtnSolicitudes.insets = new Insets(0, 0, 5, 0);
+		pMenuMaterial.add(btnSolicitudes, cBtnSolicitudes);
+		// Botón Trabajadores
+		btnTrabajadores = new JButton("Trabajadores");
+		GridBagConstraints cBtnTrabajadores = new GridBagConstraints();
+		cBtnTrabajadores.gridx = 0;
+		cBtnTrabajadores.gridy = 5;
+		cBtnTrabajadores.fill = GridBagConstraints.HORIZONTAL;
+		cBtnTrabajadores.insets = new Insets(0, 0, 5, 0);
+		pMenuMaterial.add(btnTrabajadores, cBtnTrabajadores);
+		
+		// Agregamos el Panel Menú Material al ContentPane
+		getContentPane().add(pMenuMaterial, BorderLayout.WEST);
+		pMenuMaterial.setBorder(BorderFactory.createTitledBorder("Stock Central"));
+
+		// Panel Quick Search
+		pQuickSearch = new JPanel();
+		getContentPane().add(pQuickSearch, BorderLayout.NORTH);
+		
+		lblQuickSearch = new JLabel("Búsqueda rápida:");
+		pQuickSearch.add(lblQuickSearch);
+		
+		tFQuickSearch = new JTextField();
+		tFQuickSearch.setHorizontalAlignment(SwingConstants.RIGHT);
+		pQuickSearch.add(tFQuickSearch);
+		tFQuickSearch.setColumns(20);
+		
+		// Panel Central
+		pCentral = new JPanel();
+		getContentPane().add(pCentral, BorderLayout.CENTER);
+		
+		// Panel Pedidos > Dentro de pCentral
+		pPedidos = new JPanel();
+		pPedidos.setBorder(BorderFactory.createTitledBorder("Pedidos"));
+		pCentral.add(pPedidos);
+		
+		textPane = new JTextPane();
+		pPedidos.add(textPane);
+		
+		// Panel Entrega > Dentro de pCentral
+		pEntrega = new JPanel();
+		pEntrega.setBorder(BorderFactory.createTitledBorder("Entrega"));
+		pCentral.add(pEntrega);
+		
+		textPane_1 = new JTextPane();
+		pEntrega.add(textPane_1);
+		
+		// Panel Stock > Dentro d pCentral
+		pStock = new JPanel();
+		pStock.setBorder(BorderFactory.createTitledBorder("Stock"));
+		pCentral.add(pStock);
+		
+		lblPortatil = new JLabel("Port\u00E1til");
+		pStock.add(lblPortatil);
+		
+		// Panel Last Entregas > Dentro de pCentral
+		pLastEntregas = new JPanel();
+		pLastEntregas.setBorder(BorderFactory.createTitledBorder("Últimos movimientos"));
+		pCentral.add(pLastEntregas);
+	}
+	// Métodos de la clase
+}
