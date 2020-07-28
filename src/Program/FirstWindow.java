@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -14,6 +15,8 @@ import javax.swing.JButton;
 import java.awt.Insets;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+import java.awt.Rectangle;
+import java.awt.Dimension;
 
 public class FirstWindow extends JFrame{
 	private JTextField tFQuickSearch;
@@ -25,6 +28,7 @@ public class FirstWindow extends JFrame{
 	private JPanel pPedidos;
 	private JPanel pEntrega;
 	private JPanel pStock;
+	private JPanel pSouth;
 	private JPanel pLastEntregas;
 	
 	// PQuickSearch:
@@ -36,8 +40,9 @@ public class FirstWindow extends JFrame{
 	private JButton btnSolicitudes;
 	private JButton btnTrabajadores;
 	private JLabel lblPortatil;
-	private JTextPane textPane;
-	private JTextPane textPane_1;
+	private JTextPane tPPedidos;
+	private JTextPane tPEntregas;
+	private JPanel pLastMoves;
 	
 	// Constructor vacío de la clase
 	public FirstWindow() {
@@ -120,6 +125,7 @@ public class FirstWindow extends JFrame{
 		
 		// Panel Central
 		pCentral = new JPanel();
+		pCentral.setLayout(new GridLayout(1,3));
 		getContentPane().add(pCentral, BorderLayout.CENTER);
 		
 		// Panel Pedidos > Dentro de pCentral
@@ -127,16 +133,17 @@ public class FirstWindow extends JFrame{
 		pPedidos.setBorder(BorderFactory.createTitledBorder("Pedidos"));
 		pCentral.add(pPedidos);
 		
-		textPane = new JTextPane();
-		pPedidos.add(textPane);
+		tPPedidos = new JTextPane();
+		tPPedidos.setPreferredSize(new Dimension(100,100));
+		pPedidos.add(tPPedidos);
 		
 		// Panel Entrega > Dentro de pCentral
 		pEntrega = new JPanel();
 		pEntrega.setBorder(BorderFactory.createTitledBorder("Entrega"));
 		pCentral.add(pEntrega);
 		
-		textPane_1 = new JTextPane();
-		pEntrega.add(textPane_1);
+		tPEntregas = new JTextPane();
+		pEntrega.add(tPEntregas);
 		
 		// Panel Stock > Dentro d pCentral
 		pStock = new JPanel();
@@ -146,10 +153,14 @@ public class FirstWindow extends JFrame{
 		lblPortatil = new JLabel("Port\u00E1til");
 		pStock.add(lblPortatil);
 		
-		// Panel Last Entregas > Dentro de pCentral
+		// Panel pSouth para conseguir la disposición que queremos
+		pSouth = new JPanel();
+		getContentPane().add(pSouth, BorderLayout.SOUTH);
+		
+		// Panel LastEntregas > Dentro de pLastMoves
 		pLastEntregas = new JPanel();
 		pLastEntregas.setBorder(BorderFactory.createTitledBorder("Últimos movimientos"));
-		pCentral.add(pLastEntregas);
+		pSouth.add(pLastEntregas);
 	}
 	// Métodos de la clase
 }
