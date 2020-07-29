@@ -4,6 +4,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -38,8 +39,9 @@ public class FirstWindow extends JFrame{
 	private JButton btnSolicitudes;
 	private JButton btnTrabajadores;
 	private JLabel lblPortatil;
-	private JTextPane textPane;
-	private JTextPane textPane_1;
+	private JTextPane tPPedidos;
+	private JTextPane tPEntregas;
+	private JTextPane tPLastMoves;
 	
 	// Constructor vacío de la clase
 	public FirstWindow() {
@@ -52,7 +54,6 @@ public class FirstWindow extends JFrame{
 		// Configurando panel Menú Material
 		pMenuMaterial = 	new JPanel();
 		pMenuMaterial.setLayout(new GridBagLayout());
-		
 		
 		// Ahora ya podemos agregar objetos al panel
 		// Botón entrada
@@ -130,16 +131,18 @@ public class FirstWindow extends JFrame{
 		pPedidos.setBorder(BorderFactory.createTitledBorder("Pedidos"));
 		pCentral.add(pPedidos);
 		
-		textPane = new JTextPane();
-		pPedidos.add(textPane);
+		tPPedidos = new JTextPane();
+		tPPedidos.setPreferredSize(new Dimension(190,400));
+		pPedidos.add(tPPedidos);
 		
 		// Panel Entrega > Dentro de pCentral
 		pEntrega = new JPanel();
-		pEntrega.setBorder(BorderFactory.createTitledBorder("Entrega"));
+		pEntrega.setBorder(BorderFactory.createTitledBorder("Entregas"));
 		pCentral.add(pEntrega);
 		
-		textPane_1 = new JTextPane();
-		pEntrega.add(textPane_1);
+		tPEntregas = new JTextPane();
+		tPEntregas.setPreferredSize(new Dimension(190,400));
+		pEntrega.add(tPEntregas);
 		
 		// Panel Stock > Dentro d pCentral
 		pStock = new JPanel();
@@ -157,6 +160,10 @@ public class FirstWindow extends JFrame{
 		pLastEntregas = new JPanel();
 		pLastEntregas.setBorder(BorderFactory.createTitledBorder("Últimos movimientos"));
 		pSouth.add(pLastEntregas);
+		
+		tPLastMoves = new JTextPane();
+		tPLastMoves.setPreferredSize(new Dimension(400,50));
+		pLastEntregas.add(tPLastMoves);
 	}
 	// Métodos de la clase
 }
