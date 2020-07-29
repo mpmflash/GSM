@@ -146,7 +146,7 @@ public class FirstWindow extends JFrame{
 		lblPortatil = new JLabel("Port\u00E1til");
 		pStock.add(lblPortatil);
 		
-		// Panel Last Entregas > Dentro de pCentral
+		// Panel LastEntregas > Dentro de pSouth
 		pLastEntregas = new JPanel();
 		pLastEntregas.setBorder(BorderFactory.createTitledBorder("Últimos movimientos"));
 		pCentral.add(pLastEntregas);
