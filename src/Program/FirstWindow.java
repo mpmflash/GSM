@@ -25,6 +25,7 @@ public class FirstWindow extends JFrame{
 	private JPanel pPedidos;
 	private JPanel pEntrega;
 	private JPanel pStock;
+	private JPanel pSouth;
 	private JPanel pLastEntregas;
 	
 	// PQuickSearch:
@@ -146,10 +147,14 @@ public class FirstWindow extends JFrame{
 		lblPortatil = new JLabel("Port\u00E1til");
 		pStock.add(lblPortatil);
 		
+		//Creamos panel pSouth para organizar mejor lo que queremos en la ventana
+		pSouth = new JPanel();
+		this.getContentPane().add(pSouth, BorderLayout.SOUTH);
+		
 		// Panel LastEntregas > Dentro de pSouth
 		pLastEntregas = new JPanel();
 		pLastEntregas.setBorder(BorderFactory.createTitledBorder("Últimos movimientos"));
-		pCentral.add(pLastEntregas);
+		pSouth.add(pLastEntregas);
 	}
 	// Métodos de la clase
 }
