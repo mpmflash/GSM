@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.Insets;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+import java.awt.GridLayout;
 
 public class FirstWindow extends JFrame{
 	private JTextField tFQuickSearch;
@@ -122,6 +123,7 @@ public class FirstWindow extends JFrame{
 		// Panel Central
 		pCentral = new JPanel();
 		getContentPane().add(pCentral, BorderLayout.CENTER);
+		pCentral.setLayout(new GridLayout(0, 3));
 		
 		// Panel Pedidos > Dentro de pCentral
 		pPedidos = new JPanel();
