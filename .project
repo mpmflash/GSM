@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-<<<<<<< HEAD
-	<name>git_GSM</name>
-	<comment></comment>
-	<projects>
-	</projects>
-	<buildSpec>
-	</buildSpec>
-	<natures>
-=======
 	<name>GSM</name>
 	<comment></comment>
 	<projects>
@@ -22,6 +13,5 @@
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
->>>>>>> branch 'master' of https://github.com/mpmflash/GSM.git
 	</natures>
 </projectDescription>
