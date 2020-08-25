@@ -32,15 +32,40 @@ public class FirstWindow extends JFrame{
 	
 	// PQuickSearch:
 	private JLabel lblQuickSearch;
+	
+	// PMenuMaterial:
 	private JButton btnEntrada;
 	private JButton btnSalida;
 	private JButton btnAlmacen;
 	private JButton btnPrestamos;
 	private JButton btnSolicitudes;
 	private JButton btnTrabajadores;
+	
+	// PStock:
 	private JLabel lblPortatil;
+	private JLabel lblnPortatil;
+	private JLabel lblOrdenador;
+	private JLabel lblnOrdenador;
+	private JLabel lblPantalla21;
+	private JLabel lblnPantalla21;
+	private JLabel lblPantalla24;
+	private JLabel lblnPantalla24;
+	private JLabel lblAllInOne;
+	private JLabel lblnAllInOne;
+	private JLabel lblTpv;
+	private JLabel lblnTpv;
+	private JLabel lblLitleFirewall;
+	private JLabel lblnLitleFirewall;
+	private JLabel lblBigFirewall;
+	private JLabel lblnBigFirewall;
+	
+	// PPedidos:
 	private JTextPane tPPedidos;
+	
+	// PEntregas:
 	private JTextPane tPEntregas;
+	
+	// PLastEntregas:
 	private JTextPane tPLastMoves;
 	
 	// Constructor vacío de la clase
@@ -81,7 +106,7 @@ public class FirstWindow extends JFrame{
 		cBtnAlmacen.insets = new Insets(0, 0, 5, 0);
 		pMenuMaterial.add(btnAlmacen, cBtnAlmacen);
 		// Botón Préstamos
-		btnPrestamos = new JButton("Pr\u00E9stamos");
+		btnPrestamos = new JButton("Préstamos");
 		GridBagConstraints cBtnPrestamos = new GridBagConstraints();
 		cBtnPrestamos.gridx = 0;
 		cBtnPrestamos.gridy = 3;
@@ -133,6 +158,7 @@ public class FirstWindow extends JFrame{
 		
 		tPPedidos = new JTextPane();
 		tPPedidos.setPreferredSize(new Dimension(190,400));
+		tPPedidos.setEditable(false);
 		pPedidos.add(tPPedidos);
 		
 		// Panel Entrega > Dentro de pCentral
@@ -142,15 +168,54 @@ public class FirstWindow extends JFrame{
 		
 		tPEntregas = new JTextPane();
 		tPEntregas.setPreferredSize(new Dimension(190,400));
+		tPEntregas.setEditable(false);
 		pEntrega.add(tPEntregas);
 		
 		// Panel Stock > Dentro d pCentral
 		pStock = new JPanel();
 		pStock.setBorder(BorderFactory.createTitledBorder("Stock"));
+		pStock.setLayout(new GridLayout(0,2));
 		pCentral.add(pStock);
 		
-		lblPortatil = new JLabel("Port\u00E1til");
+		lblPortatil = new JLabel("Portátiles:");
 		pStock.add(lblPortatil);
+		lblnPortatil = new JLabel("0"); // Esta información habrá que sacarla de una BBDD
+		pStock.add(lblnPortatil);
+		
+		lblOrdenador = new JLabel("Ordenadores:");
+		pStock.add(lblOrdenador);
+		lblnOrdenador = new JLabel("0"); // Esta información habrá que sacarla de una BBDD
+		pStock.add(lblnOrdenador);
+		
+		lblPantalla21 = new JLabel("Pantallas 21\':");
+		pStock.add(lblPantalla21);
+		lblnPantalla21 = new JLabel("0"); // Esta información habrá que sacarla de una BBDD
+		pStock.add(lblnPantalla21);
+		
+		lblPantalla24 = new JLabel("Pantallas 24\':");
+		pStock.add(lblPantalla24);
+		lblnPantalla24 = new JLabel("0"); // Esta información habrá que sacarla de una BBDD
+		pStock.add(lblnPantalla24);
+		
+		lblAllInOne = new JLabel("All in One:");
+		pStock.add(lblAllInOne);
+		lblnAllInOne = new JLabel("0"); // Esta información habrá que sacarla de una BBDD
+		pStock.add(lblnAllInOne);
+		
+		lblTpv = new JLabel("TPV's:");
+		pStock.add(lblTpv);
+		lblnTpv = new JLabel("0"); // Esta información habrá que sacarla de una BBDD
+		pStock.add(lblnTpv);
+		
+		lblLitleFirewall = new JLabel("Firewall pequeños:");
+		pStock.add(lblLitleFirewall);
+		lblnLitleFirewall = new JLabel("0"); // Esta información habrá que sacarla de una BBDD
+		pStock.add(lblnLitleFirewall);
+		
+		lblBigFirewall = new JLabel("Firewall grandes:");
+		pStock.add(lblBigFirewall);
+		lblnBigFirewall = new JLabel("0"); // Esta información habrá que sacarla de una BBDD
+		pStock.add(lblnBigFirewall);
 		
 		//Creamos panel pSouth para organizar mejor lo que queremos en la ventana
 		pSouth = new JPanel();
@@ -163,6 +228,7 @@ public class FirstWindow extends JFrame{
 		
 		tPLastMoves = new JTextPane();
 		tPLastMoves.setPreferredSize(new Dimension(400,50));
+		tPLastMoves.setEditable(false);
 		pLastEntregas.add(tPLastMoves);
 	}
 	// Métodos de la clase
