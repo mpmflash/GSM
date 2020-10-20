@@ -18,7 +18,7 @@ import javax.swing.JTextPane;
 import java.awt.GridLayout;
 
 public class FirstWindow extends JFrame{
-	private JTextField tFQuickSearch;
+	
 	// Atributos de la clase
 	// JPanels:
 	private JPanel pMenuMaterial;
@@ -32,14 +32,15 @@ public class FirstWindow extends JFrame{
 	
 	// PQuickSearch:
 	private JLabel lblQuickSearch;
+	private JTextField tFQuickSearch;
+	private JButton bQuickSearch;
 	
 	// PMenuMaterial:
 	private JButton btnEntrada;
+	private JButton btnPedido;
 	private JButton btnSalida;
 	private JButton btnAlmacen;
-	private JButton btnPrestamos;
-	private JButton btnSolicitudes;
-	private JButton btnTrabajadores;
+	private JButton btnPrestamo;
 	
 	// PStock:
 	private JLabel lblPortatil;
@@ -67,7 +68,6 @@ public class FirstWindow extends JFrame{
 	
 	// PLastEntregas:
 	private JTextPane tPLastMoves;
-	private JButton bQuickSearch;
 	
 	// Constructor vacío de la clase
 	public FirstWindow() {
@@ -91,13 +91,13 @@ public class FirstWindow extends JFrame{
 		cBtnEntrada.insets = new Insets(0, 0, 5, 0);
 		pMenuMaterial.add(btnEntrada, cBtnEntrada);
 		// Botón Pedido
-		btnTrabajadores = new JButton("Pedido");
+		btnPedido = new JButton("Pedido");
 		GridBagConstraints cBtnPedido = new GridBagConstraints();
 		cBtnPedido.gridx = 0;
 		cBtnPedido.gridy = 1;
 		cBtnPedido.fill = GridBagConstraints.HORIZONTAL;
 		cBtnPedido.insets = new Insets(0, 0, 5, 0);
-		pMenuMaterial.add(btnTrabajadores, cBtnPedido);
+		pMenuMaterial.add(btnPedido, cBtnPedido);
 		// Botón salida
 		GridBagConstraints cBtnSalida = new GridBagConstraints(); 
 		btnSalida = new JButton("Salida");
@@ -115,13 +115,13 @@ public class FirstWindow extends JFrame{
 		cBtnAlmacen.insets = new Insets(0, 0, 5, 0);
 		pMenuMaterial.add(btnAlmacen, cBtnAlmacen);
 		// Botón Préstamos
-		btnPrestamos = new JButton("Préstamo");
+		btnPrestamo = new JButton("Préstamo");
 		GridBagConstraints cBtnPrestamo = new GridBagConstraints();
 		cBtnPrestamo.gridx = 0;
 		cBtnPrestamo.gridy = 4;
 		cBtnPrestamo.fill = GridBagConstraints.HORIZONTAL;
 		cBtnPrestamo.insets = new Insets(0, 0, 5, 0);
-		pMenuMaterial.add(btnPrestamos, cBtnPrestamo);
+		pMenuMaterial.add(btnPrestamo, cBtnPrestamo);
 		
 		// Agregamos el Panel Menú Material al ContentPane
 		getContentPane().add(pMenuMaterial, BorderLayout.WEST);
@@ -139,7 +139,7 @@ public class FirstWindow extends JFrame{
 		pQuickSearch.add(tFQuickSearch);
 		tFQuickSearch.setColumns(20);
 		
-		bQuickSearch = new JButton("B\u00FAsqueda R\u00E1pida");
+		bQuickSearch = new JButton("Búsqueda Rápida");
 		pQuickSearch.add(bQuickSearch);
 		
 		// Panel Central
