@@ -67,6 +67,7 @@ public class FirstWindow extends JFrame{
 	
 	// PLastEntregas:
 	private JTextPane tPLastMoves;
+	private JButton bQuickSearch;
 	
 	// Constructor vacío de la clase
 	public FirstWindow() {
@@ -89,11 +90,19 @@ public class FirstWindow extends JFrame{
 		cBtnEntrada.fill = GridBagConstraints.HORIZONTAL;
 		cBtnEntrada.insets = new Insets(0, 0, 5, 0);
 		pMenuMaterial.add(btnEntrada, cBtnEntrada);
+		// Botón Pedido
+		btnTrabajadores = new JButton("Pedido");
+		GridBagConstraints cBtnPedido = new GridBagConstraints();
+		cBtnPedido.gridx = 0;
+		cBtnPedido.gridy = 1;
+		cBtnPedido.fill = GridBagConstraints.HORIZONTAL;
+		cBtnPedido.insets = new Insets(0, 0, 5, 0);
+		pMenuMaterial.add(btnTrabajadores, cBtnPedido);
 		// Botón salida
 		GridBagConstraints cBtnSalida = new GridBagConstraints(); 
 		btnSalida = new JButton("Salida");
 		cBtnSalida.gridx = 0;
-		cBtnSalida.gridy = 1;
+		cBtnSalida.gridy = 2;
 		cBtnSalida.fill = GridBagConstraints.HORIZONTAL;
 		cBtnSalida.insets = new Insets(0, 0, 5, 0);
 		pMenuMaterial.add(btnSalida, cBtnSalida);
@@ -101,34 +110,18 @@ public class FirstWindow extends JFrame{
 		btnAlmacen = new JButton("Almacén");
 		GridBagConstraints cBtnAlmacen = new GridBagConstraints();
 		cBtnAlmacen.gridx = 0;
-		cBtnAlmacen.gridy = 2;
+		cBtnAlmacen.gridy = 3;
 		cBtnAlmacen.fill = GridBagConstraints.HORIZONTAL;
 		cBtnAlmacen.insets = new Insets(0, 0, 5, 0);
 		pMenuMaterial.add(btnAlmacen, cBtnAlmacen);
 		// Botón Préstamos
-		btnPrestamos = new JButton("Préstamos");
-		GridBagConstraints cBtnPrestamos = new GridBagConstraints();
-		cBtnPrestamos.gridx = 0;
-		cBtnPrestamos.gridy = 3;
-		cBtnPrestamos.fill = GridBagConstraints.HORIZONTAL;
-		cBtnPrestamos.insets = new Insets(0, 0, 5, 0);
-		pMenuMaterial.add(btnPrestamos, cBtnPrestamos);
-		// Botón Solicitudes
-		btnSolicitudes = new JButton("Solicitudes");
-		GridBagConstraints cBtnSolicitudes = new GridBagConstraints();
-		cBtnSolicitudes.gridx = 0;
-		cBtnSolicitudes.gridy = 4;
-		cBtnSolicitudes.fill = GridBagConstraints.HORIZONTAL;
-		cBtnSolicitudes.insets = new Insets(0, 0, 5, 0);
-		pMenuMaterial.add(btnSolicitudes, cBtnSolicitudes);
-		// Botón Trabajadores
-		btnTrabajadores = new JButton("Trabajadores");
-		GridBagConstraints cBtnTrabajadores = new GridBagConstraints();
-		cBtnTrabajadores.gridx = 0;
-		cBtnTrabajadores.gridy = 5;
-		cBtnTrabajadores.fill = GridBagConstraints.HORIZONTAL;
-		cBtnTrabajadores.insets = new Insets(0, 0, 5, 0);
-		pMenuMaterial.add(btnTrabajadores, cBtnTrabajadores);
+		btnPrestamos = new JButton("Préstamo");
+		GridBagConstraints cBtnPrestamo = new GridBagConstraints();
+		cBtnPrestamo.gridx = 0;
+		cBtnPrestamo.gridy = 4;
+		cBtnPrestamo.fill = GridBagConstraints.HORIZONTAL;
+		cBtnPrestamo.insets = new Insets(0, 0, 5, 0);
+		pMenuMaterial.add(btnPrestamos, cBtnPrestamo);
 		
 		// Agregamos el Panel Menú Material al ContentPane
 		getContentPane().add(pMenuMaterial, BorderLayout.WEST);
@@ -145,6 +138,9 @@ public class FirstWindow extends JFrame{
 		tFQuickSearch.setHorizontalAlignment(SwingConstants.RIGHT);
 		pQuickSearch.add(tFQuickSearch);
 		tFQuickSearch.setColumns(20);
+		
+		bQuickSearch = new JButton("B\u00FAsqueda R\u00E1pida");
+		pQuickSearch.add(bQuickSearch);
 		
 		// Panel Central
 		pCentral = new JPanel();
