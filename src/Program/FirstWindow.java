@@ -20,6 +20,8 @@ import java.awt.GridLayout;
 public class FirstWindow extends JFrame{
 	
 	// Atributos de la clase
+	private Material stock[];
+	
 	// JPanels:
 	private JPanel pMenuMaterial;
 	private JPanel pQuickSearch;
