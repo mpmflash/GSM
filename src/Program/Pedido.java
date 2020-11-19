@@ -12,7 +12,7 @@ public class Pedido {
 	
 	// Constructor vacío
 	public Pedido() {
-		
+		// VOID
 	}
 	// Constructor pasándole datos
 	public Pedido(String mat, String usuario, String destino, String aprobacion, String gestor, String obs ) {

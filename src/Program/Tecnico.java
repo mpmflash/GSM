@@ -10,7 +10,7 @@ public class Tecnico {
 	
 	// Constructor vacío
 	public Tecnico() {
-		
+		// VOID
 	}
 	
 	// Constructor con datos

@@ -6,16 +6,18 @@ public class Material {
 	private int id;
 	private String tipo;
 	private String sn;
+	private String comentarios;
 	
 	// Constructor vacío
 	public Material() {
-		
+		// VOID
 	}
 	// Constructor parámetros
-	public Material(int x, String type, String serial) {
+	public Material(int x, String type, String serial, String comments) {
 		this.id = x;
 		this.tipo = type;
 		this.sn = serial;
+		this.comentarios = comments;
 	}
 	// Getters y Setters
 	// @return int - id
@@ -45,4 +47,12 @@ public class Material {
 		this.sn = sn;
 	}
 	
+	// @return String - comentarios del material (estado)
+	public String getComentarios() {
+		return comentarios;
+	}
+	// @param String - comentarios del material (estado)
+	public void setComentarios(String comments) {
+		this.comentarios = comments;
+	}
 }

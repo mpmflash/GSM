@@ -13,6 +13,9 @@ import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import java.awt.GridLayout;
@@ -92,6 +95,12 @@ public class FirstWindow extends JFrame{
 		cBtnEntrada.fill = GridBagConstraints.HORIZONTAL;
 		cBtnEntrada.insets = new Insets(0, 0, 5, 0);
 		pMenuMaterial.add(btnEntrada, cBtnEntrada);
+		btnEntrada.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Has pulsado el botón Entrada");
+			}
+		});
 		// Botón Pedido
 		btnPedido = new JButton("Pedido");
 		GridBagConstraints cBtnPedido = new GridBagConstraints();
