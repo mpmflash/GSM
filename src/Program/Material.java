@@ -55,4 +55,7 @@ public class Material {
 	public void setComentarios(String comments) {
 		this.comentarios = comments;
 	}
+	
+	// Métodos de la clase
+	
 }

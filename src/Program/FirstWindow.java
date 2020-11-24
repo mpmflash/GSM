@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
@@ -23,7 +24,7 @@ import java.awt.GridLayout;
 public class FirstWindow extends JFrame{
 	
 	// Atributos de la clase
-	private Material stock[];
+	private ArrayList<Material> stock;
 	
 	// JPanels:
 	private JPanel pMenuMaterial;
@@ -99,6 +100,7 @@ public class FirstWindow extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Has pulsado el botón Entrada");
+				EntradaWindow entradaMaterial = new EntradaWindow(); 
 			}
 		});
 		// Botón Pedido
@@ -179,6 +181,11 @@ public class FirstWindow extends JFrame{
 		pEntrega.add(tPEntregas);
 		
 		// Panel Stock > Dentro d pCentral
+		// Inicializamos stock para ver números en pantalla
+		
+		stock = new ArrayList<Material>();
+		
+		
 		pStock = new JPanel();
 		pStock.setBorder(BorderFactory.createTitledBorder("Stock"));
 		pStock.setLayout(new GridLayout(0,2));
@@ -186,42 +193,42 @@ public class FirstWindow extends JFrame{
 		
 		lblPortatil = new JLabel("Portátiles:");
 		pStock.add(lblPortatil);
-		lblnPortatil = new JLabel("0"); // Esta información habrá que sacarla de una BBDD
+		lblnPortatil = new JLabel( String.valueOf( countMaterial("Portatil") ) ); // Recorremos la array Stock para saber cuántos portátiles hay
 		pStock.add(lblnPortatil);
 		
 		lblOrdenador = new JLabel("Ordenadores:");
 		pStock.add(lblOrdenador);
-		lblnOrdenador = new JLabel("0"); // Esta información habrá que sacarla de una BBDD
+		lblnOrdenador = new JLabel( String.valueOf( countMaterial("Ordenador") ) ); // Esta información habrá que sacarla de una BBDD
 		pStock.add(lblnOrdenador);
 		
 		lblPantalla21 = new JLabel("Pantallas 21\':");
 		pStock.add(lblPantalla21);
-		lblnPantalla21 = new JLabel("0"); // Esta información habrá que sacarla de una BBDD
+		lblnPantalla21 = new JLabel(String.valueOf( countMaterial("Pantalla21") )); // Esta información habrá que sacarla de una BBDD
 		pStock.add(lblnPantalla21);
 		
 		lblPantalla24 = new JLabel("Pantallas 24\':");
 		pStock.add(lblPantalla24);
-		lblnPantalla24 = new JLabel("0"); // Esta información habrá que sacarla de una BBDD
+		lblnPantalla24 = new JLabel(String.valueOf( countMaterial("Pantalla24") )); // Esta información habrá que sacarla de una BBDD
 		pStock.add(lblnPantalla24);
 		
 		lblAllInOne = new JLabel("All in One:");
 		pStock.add(lblAllInOne);
-		lblnAllInOne = new JLabel("0"); // Esta información habrá que sacarla de una BBDD
+		lblnAllInOne = new JLabel(String.valueOf( countMaterial("Allinone") )); // Esta información habrá que sacarla de una BBDD
 		pStock.add(lblnAllInOne);
 		
 		lblTpv = new JLabel("TPV's:");
 		pStock.add(lblTpv);
-		lblnTpv = new JLabel("0"); // Esta información habrá que sacarla de una BBDD
+		lblnTpv = new JLabel(String.valueOf( countMaterial("Tpv") )); // Esta información habrá que sacarla de una BBDD
 		pStock.add(lblnTpv);
 		
 		lblLitleFirewall = new JLabel("Firewall pequeños:");
 		pStock.add(lblLitleFirewall);
-		lblnLitleFirewall = new JLabel("0"); // Esta información habrá que sacarla de una BBDD
+		lblnLitleFirewall = new JLabel(String.valueOf( countMaterial("Fwmini") )); // Esta información habrá que sacarla de una BBDD
 		pStock.add(lblnLitleFirewall);
 		
 		lblBigFirewall = new JLabel("Firewall grandes:");
 		pStock.add(lblBigFirewall);
-		lblnBigFirewall = new JLabel("0"); // Esta información habrá que sacarla de una BBDD
+		lblnBigFirewall = new JLabel(String.valueOf( countMaterial("Fwbig") )); // Esta información habrá que sacarla de una BBDD
 		pStock.add(lblnBigFirewall);
 		
 		//Creamos panel pSouth para organizar mejor lo que queremos en la ventana
@@ -239,4 +246,25 @@ public class FirstWindow extends JFrame{
 		pLastEntregas.add(tPLastMoves);
 	}
 	// Métodos de la clase
+	private void initStock(ArrayList<Material> listaStock) {
+
+		
+	}
+	
+	/*
+	 * countMaterial(String);
+	 * Método que le pasas un tipo de material y recorre la arrayList Stock y te cuenta cuántos hay
+	 * @param - String (tipo de material: portatil, pantalla, pc,...)
+	 * @return - int (cantidad de material)
+	 */
+	private int countMaterial(String tipo) {
+		int x= 0;
+		System.out.println("Buscando en la array: "+tipo);
+		for(Material lista: stock) {
+			if(lista.getTipo() == tipo) {
+				x++;
+			}
+		}
+		return x;
+	}
 }
