@@ -2,11 +2,18 @@ package Program;
 
 import javax.swing.JFrame;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -17,36 +24,59 @@ public class EntradaWindow extends JFrame {
 	// Diferentes JPanels para los diferentes tipos de material
 	private JPanel pNorte;
 	private JPanel pCPortatil;
-	private JPanel pCPOrdenador;
+	private JPanel pCSobremesa;
 	private JPanel pCPantalla21;
 	private JPanel pCPantalla24;
 	private JPanel pCAllinOne;
 	private JPanel pCTpv;
 	private JPanel pCFwmini;
 	private JPanel pCFwbig;
+	private JPanel pSouth;
 	
 	// Componentes de los diferentes JPanels
+	// JPanel NorthPane
 	private JComboBox cBProducto;
+	
+	// JPanel CenterPane
+	// pCPortatil:
+	private JTextField tFPSN;
+	private JTextField tFPHDD;
+	private JTextField tFPRAM;
+	// pCSobremesa:
+	private JTextField tFSSN;
+	private JTextField tFSHDD;
+	private JTextField tFSRAM;
+	
+	// JPanel South:
+	private JButton bGuardar;
+	private JButton bVolver;
 	
 	// Constructor vacío:
 	public EntradaWindow() {
 		// ** Nuestra ventana:
 		this.setTitle("GSM - Entrada de Material");
-		//this.setDefaultCloseOperation(EXIT_ON_CLOSE); // Cuando cerramos con la X, el programa sigue en ejecución, con esta línea lo paramos
-		this.setSize(800,600); //Tamaño de la ventana
+		this.setSize(400,300); //Tamaño de la ventana
 		this.setLocationRelativeTo(null); // Esto hace que se centre la ventana
 		getContentPane().setLayout(new BorderLayout());
 		// Iniciamos los diferentes paneles en métodos para limpiar el cuerpo de la clase
+		initPortatilPane();
+		initSobremesaPane();
 		initNorthPane();
-		
+		initSouthPane();
 		
 		this.setVisible(true);
 	}
 	// Métodos de la clase
+	/*
+	 * initNorthPane();
+	 * Método para iniciar el Panel North con sus objetos
+	 * @param void
+	 * @return void
+	 */
 	private void initNorthPane() {
 		// Creamos panel para colocar los items en la parte superior de la ventana
 		pNorte = new JPanel();
-		getContentPane().add(pNorte);
+		getContentPane().add(pNorte, BorderLayout.NORTH);
 		
 		// Montamos el panel Norte con los items
 		// Configuramos el gridBagLayout
@@ -90,8 +120,99 @@ public class EntradaWindow extends JFrame {
 		});
 	}
 	
-	// Método que revisará el producto seleccionado para mostrar el Jpanel correspondiente
+	/*
+	 * cambioProducto();
+	 * Método que revisará el producto seleccionado para mostrar el Jpanel correspondiente
+	 * @param void
+	 * @return void
+	 */
 	private void cambioProducto() {
 		System.out.println("Se ha cambiado el producto en el Combobox. Ahora es: " + cBProducto.getSelectedItem() );
+		// El primer JPanel que estoy montando es el del portatil así que lo haré fijo por el momento
+		// TO-DO: Método para intercambiar JPanels
+		getContentPane().add(pCPortatil, BorderLayout.CENTER);
+		pCPortatil.setVisible(true);
+	}
+	
+	/*
+	 * initPortatilPane();
+	 * Método que preparará el panel de entrada de material de portátil
+	 * @param void
+	 * @return void
+	 */
+	private void initPortatilPane() {
+		pCPortatil = new JPanel();
+		//pCPortatil.setLayout(new GridLayout(3,2));
+		FlowLayout fLayout = new FlowLayout();
+		fLayout.setHgap(20);
+		fLayout.setVgap(5);
+		pCPortatil.setLayout(fLayout);
+		pCPortatil.setBorder(BorderFactory.createTitledBorder(" Agregando portátil "));
+		
+		JLabel lblPortSN = new JLabel("S/N");
+		tFPSN = new JTextField();
+		tFPSN.setColumns(25);
+		JLabel lblHDD = new JLabel("HDD");
+		tFPHDD = new JTextField();
+		tFPHDD.setColumns(25);
+		JLabel lblRAM = new JLabel("RAM");
+		tFPRAM = new JTextField();
+		tFPRAM.setColumns(25);
+		//Agregamos los objetos creados al panel
+		pCPortatil.add(lblPortSN);
+		pCPortatil.add(tFPSN);
+		pCPortatil.add(lblHDD);
+		pCPortatil.add(tFPHDD);
+		pCPortatil.add(lblRAM);
+		pCPortatil.add(tFPRAM);		
+	}
+	
+	/*
+	 * initPortatilPane();
+	 * Método que preparará el panel de entrada de material de portátil
+	 * @param void
+	 * @return void
+	 */
+	private void initSobremesaPane() {
+		pCSobremesa = new JPanel();
+		FlowLayout fLayout = new FlowLayout();
+		fLayout.setHgap(20);
+		fLayout.setVgap(5);
+		pCSobremesa.setLayout(fLayout);
+		pCSobremesa.setBorder(BorderFactory.createTitledBorder(" Agregando sobremesa "));
+		
+		JLabel lblPortSN = new JLabel("S/N");
+		tFSSN = new JTextField();
+		tFSSN.setColumns(15);
+		JLabel lblHDD = new JLabel("HDD");
+		tFSHDD = new JTextField();
+		tFSHDD.setColumns(15);
+		JLabel lblRAM = new JLabel("RAM");
+		tFSRAM = new JTextField();
+		tFSRAM.setColumns(15);
+		//Agregamos los objetos creados al panel
+		pCSobremesa.add(lblPortSN);
+		pCSobremesa.add(tFSSN);
+		pCSobremesa.add(lblHDD);
+		pCSobremesa.add(tFSHDD);
+		pCSobremesa.add(lblRAM);
+		pCSobremesa.add(tFSRAM);
+	}
+	
+	/*
+	 * initSouthPane();
+	 * Método que iniciará y mostrará el panel de la parte bottom de la ventana
+	 * @param void
+	 * @return void
+	 */
+	private void initSouthPane() {
+		pSouth = new JPanel();
+		getContentPane().add(pSouth, BorderLayout.SOUTH);
+		pSouth.setLayout(new FlowLayout());
+		// Creamos objetos y agregamos al panel
+		bGuardar = new JButton("Guardar datos");
+		pSouth.add(bGuardar);
+		bVolver = new JButton("Volver");
+		pSouth.add(bVolver);
 	}
 }
