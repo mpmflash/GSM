@@ -32,6 +32,7 @@ public class EntradaWindow extends JFrame {
 	private JPanel pCFwmini;
 	private JPanel pCFwbig;
 	private JPanel pSouth;
+	private JPanel pActivo;
 	
 	// Componentes de los diferentes JPanels
 	// JPanel NorthPane
@@ -105,9 +106,9 @@ public class EntradaWindow extends JFrame {
 		pNorte.add(cBProducto, gbc_cBProducto);
 		// Añadimos productos, que tendremos que cogerlo del tipo de productos que tenemos, de momento manual
 		cBProducto.addItem("Portátil");
+		cBProducto.addItem("Sobremesa");
 		cBProducto.addItem("Pantalla 21");
 		cBProducto.addItem("Pantalla 24");
-		cBProducto.addItem("Ordenador");
 		cBProducto.addItem("All in One");
 		// Lanzamos el método cambioProducto para que coja el primer producto por defecto
 		cambioProducto();
@@ -131,7 +132,18 @@ public class EntradaWindow extends JFrame {
 		// El primer JPanel que estoy montando es el del portatil así que lo haré fijo por el momento
 		// TO-DO: Método para intercambiar JPanels
 		getContentPane().add(pCPortatil, BorderLayout.CENTER);
-		pCPortatil.setVisible(true);
+		switch( cBProducto.getSelectedItem().toString() ) {
+			case "Portátil": 
+				System.out.println("Escogido portatil en el combobox");
+				pCPortatil.setVisible(true);
+				break;
+			case "Sobremesa":
+				System.out.println("Escogido sobremesa en el combobox");
+				break;
+			default:
+				System.out.println("Aquí no debería entrar en la vida Hulio!");
+				break;
+		}
 	}
 	
 	/*
