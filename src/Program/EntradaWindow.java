@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import java.awt.BorderLayout;
@@ -37,8 +38,12 @@ public class EntradaWindow extends JFrame {
 	// Componentes de los diferentes JPanels
 	// JPanel NorthPane
 	private JComboBox cBProducto;
+	private JTextField tFMarca;
+	private JTextField tFModelo;
+	private JTextArea tAComentario;
 	
 	// JPanel CenterPane
+	private boolean firstTime = true;
 	// pCPortatil:
 	private JTextField tFPSN;
 	private JTextField tFPHDD;
@@ -92,7 +97,7 @@ public class EntradaWindow extends JFrame {
 		JLabel lblProducto = new JLabel("Producto");
 		GridBagConstraints gbc_lblProducto = new GridBagConstraints();
 		gbc_lblProducto.insets = new Insets(0, 0, 0, 5);
-		gbc_lblProducto.anchor = GridBagConstraints.EAST;
+		//gbc_lblProducto.anchor = GridBagConstraints.EAST;
 		gbc_lblProducto.gridx = 2;
 		gbc_lblProducto.gridy = 1;
 		pNorte.add(lblProducto, gbc_lblProducto);
@@ -110,6 +115,49 @@ public class EntradaWindow extends JFrame {
 		cBProducto.addItem("Pantalla 21");
 		cBProducto.addItem("Pantalla 24");
 		cBProducto.addItem("All in One");
+		
+		// Ponemos label marca:
+		JLabel lblMarca = new JLabel("Marca");
+		GridBagConstraints gbc_lblMarca = new GridBagConstraints();
+		gbc_lblMarca.gridx = 2;
+		gbc_lblMarca.gridy = 2;
+		pNorte.add(lblMarca, gbc_lblMarca);
+		// Ponemos TextField de Marca
+		tFMarca = new JTextField();
+		tFMarca.setColumns(15);
+		GridBagConstraints gbc_tFMarca = new GridBagConstraints();
+		gbc_tFMarca.anchor = GridBagConstraints.WEST;
+		gbc_tFMarca.gridx = 3;
+		gbc_tFMarca.gridy = 2;
+		pNorte.add(tFMarca, gbc_tFMarca);
+		// Ponemos Labl Modelo
+		JLabel lblModelo = new JLabel("Modelo");
+		GridBagConstraints gbc_lblModelo = new GridBagConstraints();
+		gbc_lblModelo.gridx = 2;
+		gbc_lblModelo.gridy = 3;
+		pNorte.add(lblModelo, gbc_lblModelo);
+		// Ponemos TextField de Modelo
+		tFModelo = new JTextField();
+		tFModelo.setColumns(15);
+		GridBagConstraints gbc_tFModelo = new GridBagConstraints();
+		gbc_tFModelo.anchor = GridBagConstraints.WEST;
+		gbc_tFModelo.gridx = 3;
+		gbc_tFModelo.gridy = 3;
+		pNorte.add(tFModelo, gbc_tFModelo);
+		
+		JLabel lblComentario = new JLabel("Comentario");
+		GridBagConstraints gbc_lblComentario = new GridBagConstraints();
+		gbc_lblComentario.gridx = 2;
+		gbc_lblComentario.gridy = 4;
+		pNorte.add(lblComentario, gbc_lblComentario);
+		
+		tAComentario = new JTextArea();
+		GridBagConstraints gbc_tAComentario = new GridBagConstraints();
+		gbc_tAComentario.fill = GridBagConstraints.HORIZONTAL;
+		gbc_tAComentario.gridx = 3;
+		gbc_tAComentario.gridy = 5;
+		pNorte.add(tAComentario, gbc_tAComentario);
+		
 		// Lanzamos el método cambioProducto para que coja el primer producto por defecto
 		cambioProducto();
 		
@@ -122,23 +170,48 @@ public class EntradaWindow extends JFrame {
 	}
 	
 	/*
-	 * cambioProducto();
+	 * cambioProducto(); - activado por ActionListener del Combobox
 	 * Método que revisará el producto seleccionado para mostrar el Jpanel correspondiente
 	 * @param void
 	 * @return void
 	 */
 	private void cambioProducto() {
-		System.out.println("Se ha cambiado el producto en el Combobox. Ahora es: " + cBProducto.getSelectedItem() );
-		// El primer JPanel que estoy montando es el del portatil así que lo haré fijo por el momento
-		// TO-DO: Método para intercambiar JPanels
-		getContentPane().add(pCPortatil, BorderLayout.CENTER);
+		System.out.println("Se ha cambiado el producto en el Combobox. Ahora es: " + cBProducto.getSelectedItem() );		
 		switch( cBProducto.getSelectedItem().toString() ) {
 			case "Portátil": 
 				System.out.println("Escogido portatil en el combobox");
-				pCPortatil.setVisible(true);
+				if(firstTime) {
+					getContentPane().add(pCPortatil, BorderLayout.CENTER);
+					pActivo = pCPortatil;
+					pCPortatil.setVisible(true);
+					firstTime = false;
+				}else {
+					pActivo.setVisible(false);
+					getContentPane().remove(pActivo);
+					getContentPane().add(pCPortatil, BorderLayout.CENTER);
+					pActivo = pCPortatil;
+					pCPortatil.setVisible(true);
+				}
 				break;
 			case "Sobremesa":
 				System.out.println("Escogido sobremesa en el combobox");
+				pActivo.setVisible(false);
+				getContentPane().remove(pActivo);
+				getContentPane().add(pCSobremesa, BorderLayout.CENTER);
+				pActivo = pCSobremesa;
+				pCSobremesa.setVisible(true);
+				break;
+			case "Pantalla 21":
+				System.out.println("Escogido pantalla 21 en el combobox");
+				break;
+			case "Pantalla 24":
+				System.out.println("Escogido pantalla 24 en el combobox");
+				break;
+			case "Fwmini":
+				System.out.println("Escogido firewall pequeño en el combobox");
+				break;
+			case "Fwbig":
+				System.out.println("Escogido firewall grande en el combobox");
 				break;
 			default:
 				System.out.println("Aquí no debería entrar en la vida Hulio!");
@@ -195,13 +268,13 @@ public class EntradaWindow extends JFrame {
 		
 		JLabel lblPortSN = new JLabel("S/N");
 		tFSSN = new JTextField();
-		tFSSN.setColumns(15);
+		tFSSN.setColumns(25);
 		JLabel lblHDD = new JLabel("HDD");
 		tFSHDD = new JTextField();
-		tFSHDD.setColumns(15);
+		tFSHDD.setColumns(25);
 		JLabel lblRAM = new JLabel("RAM");
 		tFSRAM = new JTextField();
-		tFSRAM.setColumns(15);
+		tFSRAM.setColumns(25);
 		//Agregamos los objetos creados al panel
 		pCSobremesa.add(lblPortSN);
 		pCSobremesa.add(tFSSN);
