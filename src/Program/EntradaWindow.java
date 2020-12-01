@@ -19,9 +19,11 @@ import javax.swing.JComboBox;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class EntradaWindow extends JFrame {
 	// Atributos de la clase
+	private ArrayList<Material> stock;
 	// Diferentes JPanels para los diferentes tipos de material
 	private JPanel pNorte;
 	private JPanel pCPortatil;
@@ -296,8 +298,61 @@ public class EntradaWindow extends JFrame {
 		pSouth.setLayout(new FlowLayout());
 		// Creamos objetos y agregamos al panel
 		bGuardar = new JButton("Guardar datos");
+		bGuardar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TO-DO - Guardar datos indicados del material		
+				saveData( cBProducto.getSelectedItem().toString() );
+				System.out.println("Se ha guardado el material correctamente");
+				closeWindow();
+			}
+		});
 		pSouth.add(bGuardar);
+		
 		bVolver = new JButton("Volver");
+		bVolver.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TO-DO: Cerrar ventana y volver a la pantalla principal del programa
+				closeWindow();
+			}
+		});
 		pSouth.add(bVolver);
+	}
+	
+	/*
+	 * saveData();
+	 * Método que coge los datos introducidos y los guarda en una entrada de material
+	 * @param
+	 * @return
+	 */
+	private void saveData(String producto) {
+		switch(producto) {
+		case "Portátil":
+			break;
+		case "Sobremesa":
+			break;
+		case "Pantalla21":
+			break;
+		case "Pantalla24":
+			break;
+		case "Fwmini":
+			break;
+		case "Fwbig":
+			break;
+		default:
+			System.out.println("Opción no contemplada en este switch [SaveData]");
+			break;
+		}
+	}
+	
+	/*
+	 * closeWindow();
+	 * Método que nos sirve para cerrar el JFrame activo
+	 * @param void
+	 * @return void
+	 */
+	private void closeWindow() {
+		this.dispose();
 	}
 }
