@@ -43,6 +43,7 @@ public class EntradaWindow extends JFrame {
 	private JTextField tFMarca;
 	private JTextField tFModelo;
 	private JTextArea tAComentario;
+	private JComboBox cBPedido;
 	
 	// JPanel CenterPane
 	private boolean firstTime = true;
@@ -132,7 +133,7 @@ public class EntradaWindow extends JFrame {
 		gbc_tFMarca.gridx = 3;
 		gbc_tFMarca.gridy = 2;
 		pNorte.add(tFMarca, gbc_tFMarca);
-		// Ponemos Labl Modelo
+		// Ponemos Label Modelo
 		JLabel lblModelo = new JLabel("Modelo");
 		GridBagConstraints gbc_lblModelo = new GridBagConstraints();
 		gbc_lblModelo.gridx = 2;
@@ -146,19 +147,33 @@ public class EntradaWindow extends JFrame {
 		gbc_tFModelo.gridx = 3;
 		gbc_tFModelo.gridy = 3;
 		pNorte.add(tFModelo, gbc_tFModelo);
-		
+		// Ponemos label Comentario
 		JLabel lblComentario = new JLabel("Comentario");
 		GridBagConstraints gbc_lblComentario = new GridBagConstraints();
 		gbc_lblComentario.gridx = 2;
 		gbc_lblComentario.gridy = 4;
 		pNorte.add(lblComentario, gbc_lblComentario);
-		
+		// Ponemos TextArea comentario
 		tAComentario = new JTextArea();
 		GridBagConstraints gbc_tAComentario = new GridBagConstraints();
+		gbc_tAComentario.gridwidth = 2;
 		gbc_tAComentario.fill = GridBagConstraints.HORIZONTAL;
-		gbc_tAComentario.gridx = 3;
+		gbc_tAComentario.gridx = 2;
 		gbc_tAComentario.gridy = 5;
 		pNorte.add(tAComentario, gbc_tAComentario);
+		JLabel lblPedido = new JLabel("Pedido");
+		GridBagConstraints gbc_lblPedido = new GridBagConstraints();
+		gbc_lblPedido.gridx = 2;
+		gbc_lblPedido.gridy = 6;
+		pNorte.add(lblPedido, gbc_lblPedido);
+		// Ponemos el Combobox de pedido
+		cBPedido = new JComboBox();
+		GridBagConstraints gbc_cBPedido = new GridBagConstraints();
+		gbc_cBPedido.gridx = 3;
+		gbc_cBPedido.gridy = 6;
+		cBPedido.addItem("Stock");
+		pNorte.add(cBPedido, gbc_cBPedido);
+		
 		
 		// Lanzamos el método cambioProducto para que coja el primer producto por defecto
 		cambioProducto();
