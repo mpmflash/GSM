@@ -110,6 +110,14 @@ public class FirstWindow extends JFrame{
 		cBtnPedido.gridy = 1;
 		cBtnPedido.fill = GridBagConstraints.HORIZONTAL;
 		cBtnPedido.insets = new Insets(0, 0, 5, 0);
+		btnPedido.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Has pulsado el botón Pedido");
+				PedidoWindow pedidoMaterial = new PedidoWindow();
+			}
+			
+		});
 		pMenuMaterial.add(btnPedido, cBtnPedido);
 		// Botón salida
 		GridBagConstraints cBtnSalida = new GridBagConstraints(); 

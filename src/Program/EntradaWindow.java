@@ -328,7 +328,7 @@ public class EntradaWindow extends JFrame {
 		bVolver.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TO-DO: Cerrar ventana y volver a la pantalla principal del programa
+				// Cierra la ventana y vuelve a la pantalla principal del programa
 				closeWindow();
 			}
 		});
