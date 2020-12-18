@@ -4,10 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 public class PedidoWindow extends JFrame {
 	// Atributos de la clase
@@ -29,6 +32,9 @@ public class PedidoWindow extends JFrame {
 	private JTextField tFTecnico;
 	
 	// pMaterial
+	private JComboBox cBProducto;
+	private JButton bAnadir;
+	private JButton bEliminar;
 	
 	// pObservaciones
 	
@@ -42,8 +48,9 @@ public class PedidoWindow extends JFrame {
 		this.setVisible(true);
 		// Iniciamos los diferentes paneles en métodos para limpiar el cuerpo de la clase
 		initPanelpNPedido();
-		initPanelpCenter();
 		initPanelpDatos();
+		initPanelpMaterial();
+		initPanelpCenter();
 	}
 	// Métodos de la clase
 	/*
@@ -64,6 +71,70 @@ public class PedidoWindow extends JFrame {
 	}
 	
 	/*
+	 * initPanelpDatos();
+	 * Método para preparar el JPanel pDatos
+	 * @param void
+	 * @return void
+	 */
+	private void initPanelpDatos() {
+		pDatos = new JPanel();
+		pDatos.setLayout(new GridLayout(2,4));
+		JLabel lblPersona = new JLabel("Persona");
+		pDatos.add(lblPersona);
+		tFPersona = new JTextField();
+		tFPersona.setColumns(10);
+		pDatos.add(tFPersona);
+		JLabel lblDpto = new JLabel("Dpto.");
+		pDatos.add(lblDpto);
+		tFDpto = new JTextField();
+		tFDpto.setColumns(10);
+		pDatos.add(tFDpto);
+		JLabel lblAutorizado = new JLabel("Autorizado por");
+		pDatos.add(lblAutorizado);
+		tFAutorizado = new JTextField();
+		tFAutorizado.setColumns(10);
+		pDatos.add(tFAutorizado);
+		JLabel lblTecnico = new JLabel("Técnico");
+		pDatos.add(lblTecnico);
+		tFTecnico = new JTextField();
+		tFTecnico.setColumns(10);
+		pDatos.add(tFTecnico);
+	}
+	
+	/*
+	 * initPanelpMaterial();
+	 * Método para preparar el JPanel pMaterial
+	 * @param void
+	 * @return void
+	 */
+	private void initPanelpMaterial() {
+		pMaterial = new JPanel();
+		pMaterial.setLayout(new GridLayout(3,5));
+		pMaterial.setBorder(BorderFactory.createTitledBorder("Material"));
+		// Producto
+		JLabel lblProducto = new JLabel("Producto");
+		pMaterial.add(lblProducto);
+		cBProducto = new JComboBox();
+		cBProducto.addItem("Pc");
+		cBProducto.addItem("Portatil");
+		cBProducto.addItem("Pantalla 21");
+		cBProducto.addItem("Pantalla 24");
+		cBProducto.addItem("Fw grande");
+		cBProducto.addItem("Fw pequeño");
+		pMaterial.add(cBProducto);
+		
+		// Botones
+		bAnadir = new JButton("Añadir");
+		pMaterial.add(bAnadir);
+		
+		bEliminar = new JButton("Eliminar");
+		pMaterial.add(bEliminar);
+		
+		// Los diferentes objetos que se elijan
+		
+	}
+	
+	/*
 	 * initPanelpCenter();
 	 * Método para preparar el JPanel pCenter
 	 * @param void
@@ -73,22 +144,8 @@ public class PedidoWindow extends JFrame {
 		pCenter = new JPanel();
 		pCenter.setLayout(new BorderLayout());
 		this.getContentPane().add(pCenter, BorderLayout.CENTER);
+		pCenter.add(pDatos, BorderLayout.NORTH);
+		pCenter.add(pMaterial, BorderLayout.CENTER);
 	}
-	/*
-	 * initPanelpDatos();
-	 * Método para preparar el JPanel pDatos
-	 * @param void
-	 * @return void
-	 */
-	private void initPanelpDatos() {
-		pDatos = new JPanel();
-		pDatos.setLayout(new GridLayout());
-		JLabel lblPersona = new JLabel("Persona");
-		tFPersona = new JTextField();
-		tFPersona.setColumns(10);
-		JLabel lblDpto = new JLabel("Dpto.");
-		tFDpto = new JTextField();
-		tFDpto.setColumns(10);
-		
-	}
+	
 }
