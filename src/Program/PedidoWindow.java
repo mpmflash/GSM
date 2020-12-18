@@ -8,6 +8,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -37,6 +38,9 @@ public class PedidoWindow extends JFrame {
 	private JButton bEliminar;
 	
 	// pObservaciones
+	private JTextArea tAObservaciones;
+	private JButton bRealizarPedido;
+	private JButton bCancelarPedido;
 	
 	// Constructor vacío
 	public PedidoWindow() {
@@ -51,6 +55,7 @@ public class PedidoWindow extends JFrame {
 		initPanelpDatos();
 		initPanelpMaterial();
 		initPanelpCenter();
+		initPanelpObservaciones();
 	}
 	// Métodos de la clase
 	/*
@@ -146,6 +151,21 @@ public class PedidoWindow extends JFrame {
 		this.getContentPane().add(pCenter, BorderLayout.CENTER);
 		pCenter.add(pDatos, BorderLayout.NORTH);
 		pCenter.add(pMaterial, BorderLayout.CENTER);
+	}
+	
+	private void initPanelpObservaciones(){
+		pObservaciones = new JPanel();
+		pObservaciones.setLayout(new GridLayout(3,2));
+		this.getContentPane().add(pObservaciones, BorderLayout.SOUTH);
+		JLabel lblObservaciones = new JLabel("Observaciones");
+		pObservaciones.add(lblObservaciones);
+		tAObservaciones = new JTextArea();
+		pObservaciones.add(tAObservaciones, 2,1);
+		bRealizarPedido = new JButton("Realizar pedido");
+		pObservaciones.add(bRealizarPedido);
+		bCancelarPedido = new JButton("Cancelar pedido");
+		pObservaciones.add(bCancelarPedido);
+		
 	}
 	
 }
