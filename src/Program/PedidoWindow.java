@@ -28,7 +28,7 @@ public class PedidoWindow extends JFrame {
 	
 	// pDatos
 	private JTextField tFPersona;
-	private JTextField tFDpto;
+	private JTextField tFDestino;
 	private JTextField tFAutorizado;
 	private JTextField tFTecnico;
 	
@@ -91,9 +91,9 @@ public class PedidoWindow extends JFrame {
 		pDatos.add(tFPersona);
 		JLabel lblDpto = new JLabel("Dpto.");
 		pDatos.add(lblDpto);
-		tFDpto = new JTextField();
-		tFDpto.setColumns(10);
-		pDatos.add(tFDpto);
+		tFDestino = new JTextField();
+		tFDestino.setColumns(10);
+		pDatos.add(tFDestino);
 		JLabel lblAutorizado = new JLabel("Autorizado por");
 		pDatos.add(lblAutorizado);
 		tFAutorizado = new JTextField();

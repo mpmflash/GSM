@@ -84,7 +84,7 @@ public class FirstWindow extends JFrame{
 		this.setLocationRelativeTo(null); // Esto hace que se centre la ventana
 		
 		// Configurando panel Menú Material
-		pMenuMaterial = 	new JPanel();
+		pMenuMaterial = new JPanel();
 		pMenuMaterial.setLayout(new GridBagLayout());
 		
 		// Ahora ya podemos agregar objetos al panel
@@ -192,7 +192,7 @@ public class FirstWindow extends JFrame{
 		// Inicializamos stock para ver números en pantalla
 		
 		stock = new ArrayList<Material>();
-		
+		initStock(stock);
 		
 		pStock = new JPanel();
 		pStock.setBorder(BorderFactory.createTitledBorder("Stock"));
@@ -254,9 +254,17 @@ public class FirstWindow extends JFrame{
 		pLastEntregas.add(tPLastMoves);
 	}
 	// Métodos de la clase
+	/*
+	 * initStock()
+	 * Método que usaremos para tener material de prueba
+	 * @param ArrayList<Material>
+	 * @return void
+	 */
 	private void initStock(ArrayList<Material> listaStock) {
-
-		
+		Portatil laptop1 = new Portatil(1,"Portatil","QWPOZXMN01","Portátil de prueba1","ProBook G5",480,16);
+		Portatil laptop2 = new Portatil(2,"Portatil","QWPOZXMN02","Portátil de prueba2","ProBook G6",1000,32);
+		listaStock.add(laptop1);
+		listaStock.add(laptop2);
 	}
 	
 	/*
