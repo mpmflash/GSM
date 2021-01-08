@@ -24,7 +24,8 @@ import java.awt.GridLayout;
 public class FirstWindow extends JFrame{
 	
 	// Atributos de la clase
-	private ArrayList<Material> stock;
+	private ArrayList<Material> lstStock;
+	private ArrayList<Pedido> lstPedido;
 	
 	// JPanels:
 	private JPanel pMenuMaterial;
@@ -83,6 +84,11 @@ public class FirstWindow extends JFrame{
 		this.setSize(800,600); //Tamaño de la ventana
 		this.setLocationRelativeTo(null); // Esto hace que se centre la ventana
 		
+		// Inicializamos ArrayList
+		lstStock = new ArrayList<Material>();
+		initStock(lstStock);
+		lstPedido = new ArrayList<Pedido>();
+		
 		// Configurando panel Menú Material
 		pMenuMaterial = new JPanel();
 		pMenuMaterial.setLayout(new GridBagLayout());
@@ -100,7 +106,7 @@ public class FirstWindow extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Has pulsado el botón Entrada");
-				EntradaWindow entradaMaterial = new EntradaWindow(); 
+				EntradaWindow entradaMaterial = new EntradaWindow(lstStock, lstPedido );
 			}
 		});
 		// Botón Pedido
@@ -188,11 +194,7 @@ public class FirstWindow extends JFrame{
 		tPEntregas.setEditable(false);
 		pEntrega.add(tPEntregas);
 		
-		// Panel Stock > Dentro d pCentral
-		// Inicializamos stock para ver números en pantalla
-		
-		stock = new ArrayList<Material>();
-		initStock(stock);
+		// Panel Stock > Dentro d pCentral		
 		
 		pStock = new JPanel();
 		pStock.setBorder(BorderFactory.createTitledBorder("Stock"));
@@ -276,7 +278,7 @@ public class FirstWindow extends JFrame{
 	private int countMaterial(String tipo) {
 		int x= 0;
 		System.out.println("Buscando en la array: "+tipo);
-		for(Material lista: stock) {
+		for(Material lista: lstStock) {
 			if(lista.getTipo() == tipo) {
 				x++;
 			}

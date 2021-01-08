@@ -61,7 +61,7 @@ public class EntradaWindow extends JFrame {
 	private JButton bVolver;
 	
 	// Constructor vacío:
-	public EntradaWindow() {
+	public EntradaWindow( ArrayList<Material> lstMat, ArrayList<Pedido> lstPed) {
 		// ** Nuestra ventana:
 		this.setTitle("GSM - Entrada de Material");
 		this.setSize(400,300); //Tamaño de la ventana
