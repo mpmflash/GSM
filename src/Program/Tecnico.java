@@ -6,7 +6,7 @@ public class Tecnico {
 	private String nombre;
 	private String apellido;
 	private String correo;
-	private String contraseña;
+	private String password;
 	
 	// Constructor vacío
 	public Tecnico() {
@@ -19,7 +19,7 @@ public class Tecnico {
 		this.nombre = n;
 		this.apellido = a;
 		this.correo = mail;
-		this.contraseña = pass;
+		this.password = pass;
 	}
 	
 	// Getters y Setters
@@ -60,12 +60,12 @@ public class Tecnico {
 	}
 
 	// @return String - contraseña
-	public String getContraseña() {
-		return contraseña;
+	public String getPassword() {
+		return password;
 	}
 	// @param String - password
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setPassword(String pass) {
+		this.password = pass;
 	}
 	
 }
