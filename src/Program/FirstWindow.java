@@ -106,7 +106,7 @@ public class FirstWindow extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Has pulsado el botón Entrada");
-				EntradaWindow entradaMaterial = new EntradaWindow(lstStock, lstPedido );
+				EntradaWindow entradaMaterial = new EntradaWindow(lstStock, lstPedido);
 			}
 		});
 		// Botón Pedido
@@ -263,10 +263,17 @@ public class FirstWindow extends JFrame{
 	 * @return void
 	 */
 	private void initStock(ArrayList<Material> listaStock) {
-		Portatil laptop1 = new Portatil(1,"Portatil","QWPOZXMN01","Portátil de prueba1","ProBook G5",480,16);
-		Portatil laptop2 = new Portatil(2,"Portatil","QWPOZXMN02","Portátil de prueba2","ProBook G6",1000,32);
+		Portatil laptop1 = new Portatil(listaStock.size()+1,"Portatil","QWPOZXMN01","Portátil de prueba1","ProBook G5",480,16);
+		Portatil laptop2 = new Portatil(listaStock.size()+1,"Portatil","QWPOZXMN02","Portátil de prueba2","ProBook G6",1000,32);
 		listaStock.add(laptop1);
 		listaStock.add(laptop2);
+		Ordenador pc1 = new Ordenador(listaStock.size()+1,"Ordenador","PCEUIRF01","PC de prueba1", "EliteDesk 800", 400, 16);
+		listaStock.add(pc1);
+		/* Probamos el casteo de Portatil a Material y de vuelta a Portatil
+		Portatil laptop2b;
+		laptop2b = (Portatil) listaStock.get(1);
+		System.out.println(laptop2b.toString());
+		*/
 	}
 	
 	/*

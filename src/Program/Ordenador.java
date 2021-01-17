@@ -1,19 +1,19 @@
 package Program;
 // Clase para controlar los portátiles que tenemos en stock
 
-public class Portatil extends Material{
+public class Ordenador extends Material{
 	// Atributos
 	private String modelo;
 	private int hdd;
 	private int ram;
 	
 	// Constructor vacío
-	public Portatil() {
+	public Ordenador() {
 		// VOID
 	}
 	
 	// Constructor con parámetros
-	public Portatil(int id, String type, String serial, String comments, String model, int hdd, int ram) {
+	public Ordenador(int id, String type, String serial, String comments, String model, int hdd, int ram) {
 		super.setId(id);
 		super.setTipo(type);
 		super.setSn(serial);
@@ -50,10 +50,11 @@ public class Portatil extends Material{
 	public void setRam(int ram) {
 		this.ram = ram;
 	}
+	
 	// Métodos de la clase
 	
 	/* toString() - @override
-	 * Método que describe el portatil con todos sus parámetros
+	 * Método que describe el ordenador con todos sus parámetros
 	 * @param void
 	 * @return String;
 	 */
@@ -62,4 +63,5 @@ public class Portatil extends Material{
 		portatil = "ID:"+this.getId()+". Tipo:"+this.getTipo()+". SN:"+this.getSn()+". Comentarios:"+this.getComentarios()+". Modelo:"+this.getModelo()+". HDD:"+this.getHdd()+". RAM:"+this.getRam();
 		return portatil;
 	}
+	
 }
