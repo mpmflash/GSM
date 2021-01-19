@@ -214,12 +214,12 @@ public class FirstWindow extends JFrame{
 		
 		lblPantalla21 = new JLabel("Pantallas 21\':");
 		pStock.add(lblPantalla21);
-		lblnPantalla21 = new JLabel(String.valueOf( countMaterial("Pantalla21") )); // Esta información habrá que sacarla de una BBDD
+		lblnPantalla21 = new JLabel(String.valueOf( countMaterial("Pantalla", 21) )); // Esta información habrá que sacarla de una BBDD
 		pStock.add(lblnPantalla21);
 		
 		lblPantalla24 = new JLabel("Pantallas 24\':");
 		pStock.add(lblPantalla24);
-		lblnPantalla24 = new JLabel(String.valueOf( countMaterial("Pantalla24") )); // Esta información habrá que sacarla de una BBDD
+		lblnPantalla24 = new JLabel(String.valueOf( countMaterial("Pantalla", 24) )); // Esta información habrá que sacarla de una BBDD
 		pStock.add(lblnPantalla24);
 		
 		lblAllInOne = new JLabel("All in One:");
@@ -234,12 +234,12 @@ public class FirstWindow extends JFrame{
 		
 		lblLitleFirewall = new JLabel("Firewall pequeños:");
 		pStock.add(lblLitleFirewall);
-		lblnLitleFirewall = new JLabel(String.valueOf( countMaterial("Fwmini") )); // Esta información habrá que sacarla de una BBDD
+		lblnLitleFirewall = new JLabel(String.valueOf( countMaterial("Firewall") )); // Esta información habrá que sacarla de una BBDD
 		pStock.add(lblnLitleFirewall);
 		
 		lblBigFirewall = new JLabel("Firewall grandes:");
 		pStock.add(lblBigFirewall);
-		lblnBigFirewall = new JLabel(String.valueOf( countMaterial("Fwbig") )); // Esta información habrá que sacarla de una BBDD
+		lblnBigFirewall = new JLabel(String.valueOf( countMaterial("Firewall") )); // Esta información habrá que sacarla de una BBDD
 		pStock.add(lblnBigFirewall);
 		
 		//Creamos panel pSouth para organizar mejor lo que queremos en la ventana
@@ -280,7 +280,9 @@ public class FirstWindow extends JFrame{
 		listaStock.add(tpv1);
 		
 		Pantalla screen21 = new Pantalla(listaStock.size()+1, "Pantalla", "XZOSFH", "HP","E221", "Pantalla de 21 test", 21);
+		Pantalla screen21b = new Pantalla(listaStock.size()+1, "Pantalla", "XSIUFG", "HP","E221", "Pantalla de 21 test2", 21);
 		listaStock.add(screen21);
+		listaStock.add(screen21b);
 		
 		Pantalla screen24 = new Pantalla(listaStock.size()+1, "Pantalla", "XOEWUF", "HP","E224", "Pantalla de 24 test", 24);
 		listaStock.add(screen24);
@@ -305,10 +307,22 @@ public class FirstWindow extends JFrame{
 			if(lista.getTipo() == tipo) {
 				x++;
 			}
+		}	
+		return x;
+	}
+	
+	/*
+	 * countMaterial(String, int);
+	 * Método que le pasas un tipo de material y recorre la arrayList Stock y te cuenta cuántos hay
+	 * @param - String (tipo de material: portatil, pantalla, pc,...) int (pulgadas de la pantalla)
+	 * @return - int (cantidad de material)
+	 */
+	private int countMaterial(String tipo, int inch) {
+		int x= 0;
+		System.out.println("Buscando en la array: "+tipo);
+		for(Material lista: lstStock) {	
 			if(lista.getTipo() == "Pantalla") {
-				if(((Pantalla) lista).getPulgadas() == 21) {
-					x++;
-				} else {
+				if(((Pantalla) lista).getPulgadas() == inch) {
 					x++;
 				}
 			}
