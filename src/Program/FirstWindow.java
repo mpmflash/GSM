@@ -276,8 +276,15 @@ public class FirstWindow extends JFrame{
 		Allinone all1 = new Allinone(listaStock.size()+1,"Allinone","QWDDIWRS23","HP","EliteOne", "Allinone de prueba1", 480, 16);
 		listaStock.add(all1);
 		
-		Tpv tpv1 = new Tpv(listaStock.size()+1,"Tpv","QDXCBRS23","HP","TouchPc", "TP500", 240, 8);
+		Tpv tpv1 = new Tpv(listaStock.size()+1,"Tpv","QDXCBRS23","HP","TouchPc", "TPV de Bar test", 240, 8);
 		listaStock.add(tpv1);
+		
+		Pantalla screen21 = new Pantalla(listaStock.size()+1, "Pantalla", "XZOSFH", "HP","E221", "Pantalla de 21 test", 21);
+		listaStock.add(screen21);
+		
+		Pantalla screen24 = new Pantalla(listaStock.size()+1, "Pantalla", "XOEWUF", "HP","E224", "Pantalla de 24 test", 24);
+		listaStock.add(screen24);
+		
 		/* Probamos el casteo de Portatil a Material y de vuelta a Portatil
 		Portatil laptop2b;
 		laptop2b = (Portatil) listaStock.get(1);
@@ -298,7 +305,14 @@ public class FirstWindow extends JFrame{
 			if(lista.getTipo() == tipo) {
 				x++;
 			}
-		}
+			if(lista.getTipo() == "Pantalla") {
+				if(((Pantalla) lista).getPulgadas() == 21) {
+					x++;
+				} else {
+					x++;
+				}
+			}
+		}	
 		return x;
 	}
 }
