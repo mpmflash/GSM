@@ -265,12 +265,12 @@ public class FirstWindow extends JFrame{
 	 */
 	private void initStock(ArrayList<Material> listaStock) {
 		// Probamos que la Array de Stock pueda alojar a todo tipo de Material
-		Portatil laptop1 = new Portatil(listaStock.size()+1,"Portatil","QWPOZXMN01","Portátil de prueba1","ProBook G5",480,16);
-		Portatil laptop2 = new Portatil(listaStock.size()+1,"Portatil","QWPOZXMN02","Portátil de prueba2","ProBook G6",1000,32);
+		Portatil laptop1 = new Portatil(listaStock.size()+1,"Portatil","QWPOZXMN01","HP","ProBook G5","Portátil de prueba1",480,16);
+		Portatil laptop2 = new Portatil(listaStock.size()+1,"Portatil","QWPOZXMN02","HP","EliteBook G6","Portátil de prueba2",1000,32);
 		listaStock.add(laptop1);
 		listaStock.add(laptop2);
 		
-		Ordenador pc1 = new Ordenador(listaStock.size()+1,"Ordenador","PCEUIRF01","PC de prueba1", "EliteDesk 800", 400, 16);
+		Ordenador pc1 = new Ordenador(listaStock.size()+1,"Ordenador","PCEUIRF01","HP","EliteDesk G5","PC de prueba1", 400, 16);
 		listaStock.add(pc1);
 		/* Probamos el casteo de Portatil a Material y de vuelta a Portatil
 		Portatil laptop2b;

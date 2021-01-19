@@ -3,7 +3,6 @@ package Program;
 
 public class Ordenador extends Material{
 	// Atributos
-	private String modelo;
 	private int hdd;
 	private int ram;
 	
@@ -13,25 +12,17 @@ public class Ordenador extends Material{
 	}
 	
 	// Constructor con parámetros
-	public Ordenador(int id, String type, String serial, String comments, String model, int hdd, int ram) {
+	public Ordenador(int id, String type, String serial, String brand, String model, String comments, int hdd, int ram) {
 		super.setId(id);
 		super.setTipo(type);
 		super.setSn(serial);
+		super.setMarca(brand);
+		super.setModelo(model);
 		super.setComentarios(comments);
-		this.modelo = model;
 		this.hdd = hdd;
 		this.ram = ram;
 	}
 	// Getters y Setters
-
-	// @return String - modelo del portatil
-	public String getModelo() {
-		return modelo;
-	}
-	// @parma String - modelo del portátil
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
 
 	// @return int - capacidad de disco duro
 	public int getHdd() {
@@ -59,9 +50,9 @@ public class Ordenador extends Material{
 	 * @return String;
 	 */
 	public String toString() {
-		String portatil = "";
-		portatil = "ID:"+this.getId()+". Tipo:"+this.getTipo()+". SN:"+this.getSn()+". Comentarios:"+this.getComentarios()+". Modelo:"+this.getModelo()+". HDD:"+this.getHdd()+". RAM:"+this.getRam();
-		return portatil;
+		String ordenador = "";
+		ordenador = "ID:"+this.getId()+". Tipo:"+this.getTipo()+". SN:"+this.getSn()+". Marca:"+super.getMarca()+". Modelo:"+super.getModelo()+". Comentarios:"+this.getComentarios()+". HDD:"+this.getHdd()+". RAM:"+this.getRam();
+		return ordenador;
 	}
 	
 }

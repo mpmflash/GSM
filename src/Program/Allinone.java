@@ -1,24 +1,24 @@
 package Program;
 // Clase para controlar los portátiles que tenemos en stock
 
-public class Portatil extends Material{
+public class Allinone extends Material{
 	// Atributos
 	private int hdd;
 	private int ram;
 	
 	// Constructor vacío
-	public Portatil() {
+	public Allinone() {
 		// VOID
 	}
 	
 	// Constructor con parámetros
-	public Portatil(int id, String type, String serial, String brand, String model,String comments, int hdd, int ram) {
+	public Allinone(int id, String type, String serial, String brand, String model, String comments, int hdd, int ram) {
 		super.setId(id);
 		super.setTipo(type);
 		super.setSn(serial);
-		super.setComentarios(comments);
 		super.setMarca(brand);
 		super.setModelo(model);
+		super.setComentarios(comments);
 		this.hdd = hdd;
 		this.ram = ram;
 	}
@@ -41,16 +41,18 @@ public class Portatil extends Material{
 	public void setRam(int ram) {
 		this.ram = ram;
 	}
+	
 	// Métodos de la clase
 	
 	/* toString() - @override
-	 * Método que describe el portatil con todos sus parámetros
+	 * Método que describe el allinone con todos sus parámetros
 	 * @param void
 	 * @return String;
 	 */
 	public String toString() {
-		String portatil = "";
-		portatil = "ID:"+this.getId()+". Tipo:"+this.getTipo()+". SN:"+this.getSn()+". Marca:"+super.getMarca()+". Modelo:"+super.getModelo()+". Comentarios:"+this.getComentarios()+". HDD:"+this.getHdd()+". RAM:"+this.getRam();
-		return portatil;
+		String allinone = "";
+		allinone = "ID:"+this.getId()+". Tipo:"+this.getTipo()+". SN:"+this.getSn()+". Marca:"+super.getMarca()+". Modelo:"+super.getModelo()+". Comentarios:"+this.getComentarios()+". HDD:"+this.getHdd()+". RAM:"+this.getRam();
+		return allinone;
 	}
+	
 }

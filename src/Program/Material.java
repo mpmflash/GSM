@@ -6,6 +6,8 @@ public class Material {
 	private int id;
 	private String tipo;
 	private String sn;
+	private String marca;
+	private String modelo;
 	private String comentarios;
 	
 	// Constructor vacío
@@ -13,10 +15,12 @@ public class Material {
 		// VOID
 	}
 	// Constructor parámetros
-	public Material(int x, String type, String serial, String comments) {
+	public Material(int x, String type, String serial, String brand, String model, String comments) {
 		this.id = x;
 		this.tipo = type;
 		this.sn = serial;
+		this.marca = brand;
+		this.modelo = model;
 		this.comentarios = comments;
 	}
 	// Getters y Setters
@@ -45,6 +49,24 @@ public class Material {
 	// @param String - serial number
 	public void setSn(String sn) {
 		this.sn = sn;
+	}
+	
+	// @return String - marca
+	public String getMarca() {
+		return marca;
+	}
+	// @param String - marca
+	public void setMarca(String brand) {
+		this.marca = brand;
+	}
+	
+	// @return String - modelo 
+	public String getModelo() {
+		return modelo;
+	}
+	// @parma String - modelo
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
 	}
 	
 	// @return String - comentarios del material (estado)
