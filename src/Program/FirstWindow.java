@@ -272,6 +272,12 @@ public class FirstWindow extends JFrame{
 		
 		Ordenador pc1 = new Ordenador(listaStock.size()+1,"Ordenador","PCEUIRF01","HP","EliteDesk G5","PC de prueba1", 400, 16);
 		listaStock.add(pc1);
+		
+		Allinone all1 = new Allinone(listaStock.size()+1,"Allinone","QWDDIWRS23","HP","EliteOne", "Allinone de prueba1", 480, 16);
+		listaStock.add(all1);
+		
+		Tpv tpv1 = new Tpv(listaStock.size()+1,"Tpv","QDXCBRS23","HP","TouchPc", "TP500", 240, 8);
+		listaStock.add(tpv1);
 		/* Probamos el casteo de Portatil a Material y de vuelta a Portatil
 		Portatil laptop2b;
 		laptop2b = (Portatil) listaStock.get(1);
