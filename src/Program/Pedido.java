@@ -1,9 +1,11 @@
 package Program;
 
+import java.util.ArrayList;
+
 public class Pedido {
 	// Atributos 
 	private int id;
-	private String material;
+	private ArrayList <Material> lstMatPed;
 	private String destinatario;
 	private String destino;
 	private String autorizacion;
@@ -15,8 +17,8 @@ public class Pedido {
 		// VOID
 	}
 	// Constructor pasándole datos
-	public Pedido(String mat, String usuario, String destino, String aprobacion, String gestor, String obs ) {
-		this.material = mat;
+	public Pedido( String usuario, String destino, String aprobacion, String gestor, String obs ) {
+		
 		this.destinatario = usuario;
 		this.destino = destino;
 		this.autorizacion = aprobacion;
@@ -31,14 +33,6 @@ public class Pedido {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	
-	// Material
-	public String getMaterial() {
-		return material;
-	}
-	public void setMaterial(String material) {
-		this.material = material;
 	}
 	
 	// Destinatario
@@ -79,5 +73,12 @@ public class Pedido {
 	}
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
-	}	
+	}
+	
+	// Métodos de la clase
+	
+	/* addMaterial();
+	 * Método con el que añadimos un material a la lista de Pedido
+	 * 
+	 */
 }
