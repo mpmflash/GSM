@@ -28,12 +28,10 @@ public class EntradaWindow extends JFrame {
 	private JPanel pNorte;
 	private JPanel pCPortatil;
 	private JPanel pCSobremesa;
-	private JPanel pCPantalla21;
-	private JPanel pCPantalla24;
-	private JPanel pCAllinOne;
+	private JPanel pCPantalla;
+	private JPanel pCAllinone;
 	private JPanel pCTpv;
-	private JPanel pCFwmini;
-	private JPanel pCFwbig;
+	private JPanel pCFw;
 	private JPanel pSouth;
 	private JPanel pActivo;
 	
@@ -55,6 +53,18 @@ public class EntradaWindow extends JFrame {
 	private JTextField tFSSN;
 	private JTextField tFSHDD;
 	private JTextField tFSRAM;
+	// pCPantalla
+	private JComboBox cBTamanyo;
+	// pCAllinone
+	private JTextField tFASN;
+	private JTextField tFAHDD;
+	private JTextField tFARAM;
+	// pCTpv
+	private JTextField tFTSN;
+	private JTextField tFTHDD;
+	private JTextField tFTRAM;
+	// pCFw
+	private JComboBox cBFw;
 	
 	// JPanel South:
 	private JButton bGuardar;
@@ -67,9 +77,15 @@ public class EntradaWindow extends JFrame {
 		this.setSize(400,300); //Tamaño de la ventana
 		this.setLocationRelativeTo(null); // Esto hace que se centre la ventana
 		getContentPane().setLayout(new BorderLayout());
+		// Inicializamos las listas para poderlas utilizar
+		stock = lstMat;
 		// Iniciamos los diferentes paneles en métodos para limpiar el cuerpo de la clase
 		initPortatilPane();
 		initSobremesaPane();
+		initPantallaPane();
+		initAllinonePane();
+		initTpvPane();
+		initFirewallPane();
 		initNorthPane();
 		initSouthPane();
 		
@@ -114,10 +130,11 @@ public class EntradaWindow extends JFrame {
 		pNorte.add(cBProducto, gbc_cBProducto);
 		// Añadimos productos, que tendremos que cogerlo del tipo de productos que tenemos, de momento manual
 		cBProducto.addItem("Portátil");
-		cBProducto.addItem("Sobremesa");
-		cBProducto.addItem("Pantalla 21");
-		cBProducto.addItem("Pantalla 24");
+		cBProducto.addItem("Ordenador");
+		cBProducto.addItem("Pantalla");
 		cBProducto.addItem("All in One");
+		cBProducto.addItem("TPV");
+		cBProducto.addItem("Firewall");
 		
 		// Ponemos label marca:
 		JLabel lblMarca = new JLabel("Marca");
@@ -210,7 +227,7 @@ public class EntradaWindow extends JFrame {
 					pCPortatil.setVisible(true);
 				}
 				break;
-			case "Sobremesa":
+			case "Ordenador":
 				System.out.println("Escogido sobremesa en el combobox");
 				pActivo.setVisible(false);
 				getContentPane().remove(pActivo);
@@ -218,18 +235,39 @@ public class EntradaWindow extends JFrame {
 				pActivo = pCSobremesa;
 				pCSobremesa.setVisible(true);
 				break;
-			case "Pantalla 21":
-				System.out.println("Escogido pantalla 21 en el combobox");
+			case "Pantalla":
+				System.out.println("Escogido pantalla en el combobox");
+				pActivo.setVisible(false);
+				getContentPane().remove(pActivo);
+				getContentPane().add(pCPantalla, BorderLayout.CENTER);
+				pActivo = pCPantalla;
+				pCPantalla.setVisible(true);
 				break;
-			case "Pantalla 24":
-				System.out.println("Escogido pantalla 24 en el combobox");
+			case "All in One":
+				System.out.println("Escogido All in one en el combobox");
+				pActivo.setVisible(false);
+				getContentPane().remove(pActivo);
+				getContentPane().add(pCAllinone, BorderLayout.CENTER);
+				pActivo = pCAllinone;
+				pCAllinone.setVisible(true);
 				break;
-			case "Fwmini":
-				System.out.println("Escogido firewall pequeño en el combobox");
+			case "TPV":
+				System.out.println("Escogido TPV en el combobox");
+				pActivo.setVisible(false);
+				getContentPane().remove(pActivo);
+				getContentPane().add(pCTpv, BorderLayout.CENTER);
+				pActivo = pCTpv;
+				pCTpv.setVisible(true);
 				break;
-			case "Fwbig":
-				System.out.println("Escogido firewall grande en el combobox");
+			case "Firewall":
+				System.out.println("Escogido firewall en el combobox");
+				pActivo.setVisible(false);
+				getContentPane().remove(pActivo);
+				getContentPane().add(pCFw, BorderLayout.CENTER);
+				pActivo = pCFw;
+				pCFw.setVisible(true);
 				break;
+				
 			default:
 				System.out.println("Aquí no debería entrar en la vida Hulio!");
 				break;
@@ -270,8 +308,8 @@ public class EntradaWindow extends JFrame {
 	}
 	
 	/*
-	 * initPortatilPane();
-	 * Método que preparará el panel de entrada de material de portátil
+	 * initSobremesaPane();
+	 * Método que preparará el panel de entrada de material de sobremesa
 	 * @param void
 	 * @return void
 	 */
@@ -302,6 +340,116 @@ public class EntradaWindow extends JFrame {
 	}
 	
 	/*
+	 * initPantallaPane();
+	 * Método que preparará el panel de entrada de material de pantallas
+	 * @param void
+	 * @return void
+	 */
+	private void initPantallaPane() {
+		pCPantalla = new JPanel();
+		FlowLayout fLayout = new FlowLayout();
+		fLayout.setHgap(20);
+		fLayout.setVgap(5);
+		pCPantalla.setLayout(fLayout);
+		pCPantalla.setBorder(BorderFactory.createTitledBorder(" Agregando Pantalla "));
+		
+		JLabel lblTamanyo = new JLabel("Tamaño");
+		cBTamanyo = new JComboBox();
+		cBTamanyo.addItem("21");
+		cBTamanyo.addItem("24");
+		//Agregamos los objetos creados al panel
+		pCPantalla.add(lblTamanyo);
+		pCPantalla.add(cBTamanyo);
+	}
+	
+	/*
+	 * initAllinonePane();
+	 * Método que preparará el panel de entrada de material de Allinone
+	 * @param void
+	 * @return void
+	 */
+	private void initAllinonePane() {
+		pCAllinone = new JPanel();
+		FlowLayout fLayout = new FlowLayout();
+		fLayout.setHgap(20);
+		fLayout.setVgap(5);
+		pCAllinone.setLayout(fLayout);
+		pCAllinone.setBorder(BorderFactory.createTitledBorder(" Agregando All-in-One "));
+		
+		JLabel lblAllinoneSN = new JLabel("S/N");
+		tFASN = new JTextField();
+		tFASN.setColumns(25);
+		JLabel lblHDD = new JLabel("HDD");
+		tFAHDD = new JTextField();
+		tFAHDD.setColumns(25);
+		JLabel lblRAM = new JLabel("RAM");
+		tFARAM = new JTextField();
+		tFARAM.setColumns(25);
+		//Agregamos los objetos creados al panel
+		pCAllinone.add(lblAllinoneSN);
+		pCAllinone.add(tFASN);
+		pCAllinone.add(lblHDD);
+		pCAllinone.add(tFAHDD);
+		pCAllinone.add(lblRAM);
+		pCAllinone.add(tFARAM);
+	}
+	
+	/*
+	 * initTpvPane();
+	 * Método que preparará el panel de entrada de material de Allinone
+	 * @param void
+	 * @return void
+	 */
+	private void initTpvPane() {
+		pCTpv = new JPanel();
+		FlowLayout fLayout = new FlowLayout();
+		fLayout.setHgap(20);
+		fLayout.setVgap(5);
+		pCTpv.setLayout(fLayout);
+		pCTpv.setBorder(BorderFactory.createTitledBorder(" Agregando TPV "));
+		
+		JLabel lblAllinoneSN = new JLabel("S/N");
+		tFTSN = new JTextField();
+		tFTSN.setColumns(25);
+		JLabel lblHDD = new JLabel("HDD");
+		tFTHDD = new JTextField();
+		tFTHDD.setColumns(25);
+		JLabel lblRAM = new JLabel("RAM");
+		tFTRAM = new JTextField();
+		tFTRAM.setColumns(25);
+		//Agregamos los objetos creados al panel
+		pCTpv.add(lblAllinoneSN);
+		pCTpv.add(tFTSN);
+		pCTpv.add(lblHDD);
+		pCTpv.add(tFTHDD);
+		pCTpv.add(lblRAM);
+		pCTpv.add(tFTRAM);
+	}
+	
+	/*
+	 * initFirewallPane();
+	 * Método que preparará el panel de entrada de material de pantallas
+	 * @param void
+	 * @return void
+	 */
+	private void initFirewallPane() {
+		pCFw = new JPanel();
+		FlowLayout fLayout = new FlowLayout();
+		fLayout.setHgap(20);
+		fLayout.setVgap(5);
+		pCFw.setLayout(fLayout);
+		pCFw.setBorder(BorderFactory.createTitledBorder(" Agregando Firewall "));
+		
+		JLabel lblTamanyo = new JLabel("Tamaño");
+		cBFw = new JComboBox();
+		cBFw.addItem("Pequeño");
+		cBFw.addItem("Grande");
+		//Agregamos los objetos creados al panel
+		pCFw.add(lblTamanyo);
+		pCFw.add(cBFw);
+	}
+	
+	/*
 	 * initSouthPane();
 	 * Método que iniciará y mostrará el panel de la parte bottom de la ventana
 	 * @param void
@@ -313,10 +461,10 @@ public class EntradaWindow extends JFrame {
 		pSouth.setLayout(new FlowLayout());
 		// Creamos objetos y agregamos al panel
 		bGuardar = new JButton("Guardar datos");
+		
 		bGuardar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TO-DO - Guardar datos indicados del material		
 				saveData( cBProducto.getSelectedItem().toString() );
 				System.out.println("Se ha guardado el material correctamente");
 				closeWindow();
@@ -343,17 +491,30 @@ public class EntradaWindow extends JFrame {
 	 */
 	private void saveData(String producto) {
 		switch(producto) {
+		// TO-DO - Probar agregando un portátil
 		case "Portátil":
+			System.out.println("Guardando Portátil [SaveData]");
+			Portatil laptop = new Portatil(stock.size()+1, tFPSN.getText(), tFMarca.getText(), tFModelo.getText(), tAComentario.getText(), Integer.parseInt(tFPHDD.getText()), Integer.parseInt(tFPRAM.getText()));
 			break;
 		case "Sobremesa":
+			System.out.println("Guardando Sobremesa [SaveData]");
+			Ordenador pc = new Ordenador();
 			break;
-		case "Pantalla21":
+		case "Pantalla":
+			System.out.println("Guardando Pantalla [SaveData]");
+			Pantalla screen = new Pantalla();
 			break;
-		case "Pantalla24":
+		case "All in One":
+			System.out.println("Guardando AllinOne [SaveData]");
+			Allinone aio = new Allinone();
 			break;
-		case "Fwmini":
+		case "TPV":
+			System.out.println("Guardando TPV [SaveData]");
+			Tpv tpv = new Tpv();
 			break;
-		case "Fwbig":
+		case "Firewall":
+			System.out.println("Guardando Firewall [SaveData]");
+			Firewall fw = new Firewall();
 			break;
 		default:
 			System.out.println("Opción no contemplada en este switch [SaveData]");

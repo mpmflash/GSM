@@ -12,9 +12,9 @@ public class Portatil extends Material{
 	}
 	
 	// Constructor con parámetros
-	public Portatil(int id, String type, String serial, String brand, String model,String comments, int hdd, int ram) {
+	public Portatil(int id, String serial, String brand, String model,String comments, int hdd, int ram) {
+		super.setTipo("Portatil");
 		super.setId(id);
-		super.setTipo(type);
 		super.setSn(serial);
 		super.setComentarios(comments);
 		super.setMarca(brand);

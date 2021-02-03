@@ -234,12 +234,12 @@ public class FirstWindow extends JFrame{
 		
 		lblLitleFirewall = new JLabel("Firewall pequeños:");
 		pStock.add(lblLitleFirewall);
-		lblnLitleFirewall = new JLabel(String.valueOf( countMaterial("Firewall") )); // Esta información habrá que sacarla de una BBDD
+		lblnLitleFirewall = new JLabel(String.valueOf( countMaterial("Firewall", true) )); // Esta información habrá que sacarla de una BBDD
 		pStock.add(lblnLitleFirewall);
 		
 		lblBigFirewall = new JLabel("Firewall grandes:");
 		pStock.add(lblBigFirewall);
-		lblnBigFirewall = new JLabel(String.valueOf( countMaterial("Firewall") )); // Esta información habrá que sacarla de una BBDD
+		lblnBigFirewall = new JLabel(String.valueOf( countMaterial("Firewall", false) )); // Esta información habrá que sacarla de una BBDD
 		pStock.add(lblnBigFirewall);
 		
 		//Creamos panel pSouth para organizar mejor lo que queremos en la ventana
@@ -265,8 +265,8 @@ public class FirstWindow extends JFrame{
 	 */
 	private void initStock(ArrayList<Material> listaStock) {
 		// Probamos que la Array de Stock pueda alojar a todo tipo de Material
-		Portatil laptop1 = new Portatil(listaStock.size()+1,"Portatil","QWPOZXMN01","HP","ProBook G5","Portátil de prueba1",480,16);
-		Portatil laptop2 = new Portatil(listaStock.size()+1,"Portatil","QWPOZXMN02","HP","EliteBook G6","Portátil de prueba2",1000,32);
+		Portatil laptop1 = new Portatil(listaStock.size()+1,"QWPOZXMN01","HP","ProBook G5","Portátil de prueba1",480,16);
+		Portatil laptop2 = new Portatil(listaStock.size()+1,"QWPOZXMN02","HP","EliteBook G6","Portátil de prueba2",1000,32);
 		listaStock.add(laptop1);
 		listaStock.add(laptop2);
 		
@@ -286,6 +286,11 @@ public class FirstWindow extends JFrame{
 		
 		Pantalla screen24 = new Pantalla(listaStock.size()+1, "Pantalla", "XOEWUF", "HP","E224", "Pantalla de 24 test", 24);
 		listaStock.add(screen24);
+		
+		Firewall fw1P = new Firewall(listaStock.size()+1, "Firewall", "HW-20343", "Huawei","USG6510E", "Firewall de pequeño", true);
+		Firewall fw2G = new Firewall(listaStock.size()+1, "Firewall", "HW-40853", "Huawei","USG6530E", "Firewall de grande", false);
+		listaStock.add(fw1P);
+		listaStock.add(fw2G);
 		
 		/* Probamos el casteo de Portatil a Material y de vuelta a Portatil
 		Portatil laptop2b;
@@ -323,6 +328,25 @@ public class FirstWindow extends JFrame{
 		for(Material lista: lstStock) {	
 			if(lista.getTipo() == "Pantalla") {
 				if(((Pantalla) lista).getPulgadas() == inch) {
+					x++;
+				}
+			}
+		}	
+		return x;
+	}
+	
+	/*
+	 * countMaterial(String, boolean);
+	 * Método que le pasas un tipo de material y recorre la arrayList Stock y te cuenta cuántos hay
+	 * @param - String (tipo de material: portatil, pantalla, pc,...) boolean (si el fw es pequeño)
+	 * @return - boolean (fw pequeño?)
+	 */
+	private int countMaterial(String tipo, boolean small) {
+		int x= 0;
+		System.out.println("Buscando en la array: "+tipo);
+		for(Material lista: lstStock) {	
+			if(lista.getTipo() == "Firewall") {
+				if(((Firewall) lista).isSmall() == small) {
 					x++;
 				}
 			}
