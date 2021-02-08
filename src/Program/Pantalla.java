@@ -10,14 +10,14 @@ public class Pantalla extends Material{
 	}
 	
 	// Constructor con parámetros
-	public Pantalla(int id, String type, String sn, String brand, String model, String comments, int inch) {
+	public Pantalla(int id, String sn, String brand, String model, String comments, int inch) {
 		super.setId(id);
-		super.setTipo(type);
 		super.setSn(sn);
 		super.setMarca(brand);
 		super.setModelo(model);
 		super.setComentarios(comments);
 		this.setPulgadas(inch);
+		super.setTipo("Pantalla");
 	}
 	
 	// Getters y Setters

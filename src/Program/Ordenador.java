@@ -12,15 +12,15 @@ public class Ordenador extends Material{
 	}
 	
 	// Constructor con parámetros
-	public Ordenador(int id, String type, String serial, String brand, String model, String comments, int hdd, int ram) {
+	public Ordenador(int id, String serial, String brand, String model, String comments, int hdd, int ram) {
 		super.setId(id);
-		super.setTipo(type);
 		super.setSn(serial);
 		super.setMarca(brand);
 		super.setModelo(model);
 		super.setComentarios(comments);
 		this.hdd = hdd;
 		this.ram = ram;
+		super.setTipo("Ordenador");
 	}
 	// Getters y Setters
 

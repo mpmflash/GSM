@@ -49,6 +49,7 @@ public class FirstWindow extends JFrame{
 	private JButton btnSalida;
 	private JButton btnAlmacen;
 	private JButton btnPrestamo;
+	private JButton btnActualizar;
 	
 	// PStock:
 	private JLabel lblPortatil;
@@ -108,6 +109,7 @@ public class FirstWindow extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Has pulsado el botón Entrada");
 				EntradaWindow entradaMaterial = new EntradaWindow(lstStock, lstPedido);
+				refreshLblMaterial();
 			}
 		});
 		// Botón Pedido
@@ -122,6 +124,7 @@ public class FirstWindow extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Has pulsado el botón Pedido");
 				PedidoWindow pedidoMaterial = new PedidoWindow();
+				refreshLblMaterial();
 			}
 			
 		});
@@ -150,6 +153,21 @@ public class FirstWindow extends JFrame{
 		cBtnPrestamo.fill = GridBagConstraints.HORIZONTAL;
 		cBtnPrestamo.insets = new Insets(0, 0, 5, 0);
 		pMenuMaterial.add(btnPrestamo, cBtnPrestamo);
+		// Botón Actualizar datos
+		btnActualizar = new JButton("Actualizar");
+		GridBagConstraints cBtnActualizar = new GridBagConstraints();
+		cBtnActualizar.gridx = 0;
+		cBtnActualizar.gridy = 5;
+		cBtnActualizar.fill = GridBagConstraints.HORIZONTAL;
+		cBtnActualizar.insets = new Insets(0, 0, 5, 0);
+		pMenuMaterial.add(btnActualizar, cBtnActualizar);
+		btnActualizar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				refreshLblMaterial();
+			}
+			
+		});
 		
 		// Agregamos el Panel Menú Material al ContentPane
 		getContentPane().add(pMenuMaterial, BorderLayout.WEST);
@@ -270,7 +288,7 @@ public class FirstWindow extends JFrame{
 		listaStock.add(laptop1);
 		listaStock.add(laptop2);
 		
-		Ordenador pc1 = new Ordenador(listaStock.size()+1,"Ordenador","PCEUIRF01","HP","EliteDesk G5","PC de prueba1", 400, 16);
+		Ordenador pc1 = new Ordenador(listaStock.size()+1,"PCEUIRF01","HP","EliteDesk G5","PC de prueba1", 400, 16);
 		listaStock.add(pc1);
 		
 		Allinone all1 = new Allinone(listaStock.size()+1,"Allinone","QWDDIWRS23","HP","EliteOne", "Allinone de prueba1", 480, 16);
@@ -279,16 +297,16 @@ public class FirstWindow extends JFrame{
 		Tpv tpv1 = new Tpv(listaStock.size()+1,"Tpv","QDXCBRS23","HP","TouchPc", "TPV de Bar test", 240, 8);
 		listaStock.add(tpv1);
 		
-		Pantalla screen21 = new Pantalla(listaStock.size()+1, "Pantalla", "XZOSFH", "HP","E221", "Pantalla de 21 test", 21);
-		Pantalla screen21b = new Pantalla(listaStock.size()+1, "Pantalla", "XSIUFG", "HP","E221", "Pantalla de 21 test2", 21);
+		Pantalla screen21 = new Pantalla(listaStock.size()+1, "XZOSFH", "HP","E221", "Pantalla de 21 test", 21);
+		Pantalla screen21b = new Pantalla(listaStock.size()+1, "XSIUFG", "HP","E221", "Pantalla de 21 test2", 21);
 		listaStock.add(screen21);
 		listaStock.add(screen21b);
 		
-		Pantalla screen24 = new Pantalla(listaStock.size()+1, "Pantalla", "XOEWUF", "HP","E224", "Pantalla de 24 test", 24);
+		Pantalla screen24 = new Pantalla(listaStock.size()+1, "XOEWUF", "HP","E224", "Pantalla de 24 test", 24);
 		listaStock.add(screen24);
 		
-		Firewall fw1P = new Firewall(listaStock.size()+1, "Firewall", "HW-20343", "Huawei","USG6510E", "Firewall de pequeño", true);
-		Firewall fw2G = new Firewall(listaStock.size()+1, "Firewall", "HW-40853", "Huawei","USG6530E", "Firewall de grande", false);
+		Firewall fw1P = new Firewall(listaStock.size()+1, "HW-20343", "Huawei","USG6510E", "Firewall de pequeño", true);
+		Firewall fw2G = new Firewall(listaStock.size()+1, "HW-40853", "Huawei","USG6530E", "Firewall de grande", false);
 		listaStock.add(fw1P);
 		listaStock.add(fw2G);
 		
@@ -352,5 +370,16 @@ public class FirstWindow extends JFrame{
 			}
 		}	
 		return x;
+	}
+	
+	private void refreshLblMaterial() {
+		lblnPortatil.setText( String.valueOf( countMaterial("Portatil") ));
+		lblnOrdenador.setText( String.valueOf( countMaterial("Ordenador") ));
+		lblnPantalla21.setText( String.valueOf( countMaterial("Pantalla", 21) ));
+		lblnPantalla24.setText( String.valueOf( countMaterial("Pantalla", 24) ));
+		lblnAllInOne.setText( String.valueOf( countMaterial("Allinone") ));
+		lblnTpv.setText( String.valueOf( countMaterial("Tpv") ));
+		lblnLitleFirewall.setText( String.valueOf( countMaterial("Firewall", true) ));
+		lblnBigFirewall.setText( String.valueOf( countMaterial("Firewall", false) ));
 	}
 }

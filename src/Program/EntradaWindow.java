@@ -64,6 +64,7 @@ public class EntradaWindow extends JFrame {
 	private JTextField tFTHDD;
 	private JTextField tFTRAM;
 	// pCFw
+	private JTextField tFFSN;
 	private JComboBox cBFw;
 	
 	// JPanel South:
@@ -440,11 +441,16 @@ public class EntradaWindow extends JFrame {
 		pCFw.setLayout(fLayout);
 		pCFw.setBorder(BorderFactory.createTitledBorder(" Agregando Firewall "));
 		
+		JLabel lblSNFW = new JLabel("SN");
+		tFFSN = new JTextField();
+		tFFSN.setColumns(10);
 		JLabel lblTamanyo = new JLabel("Tamaño");
 		cBFw = new JComboBox();
 		cBFw.addItem("Pequeño");
 		cBFw.addItem("Grande");
 		//Agregamos los objetos creados al panel
+		pCFw.add(lblSNFW);
+		pCFw.add(tFFSN);
 		pCFw.add(lblTamanyo);
 		pCFw.add(cBFw);
 	}
@@ -495,14 +501,16 @@ public class EntradaWindow extends JFrame {
 		case "Portátil":
 			System.out.println("Guardando Portátil [SaveData]");
 			Portatil laptop = new Portatil(stock.size()+1, tFPSN.getText(), tFMarca.getText(), tFModelo.getText(), tAComentario.getText(), Integer.parseInt(tFPHDD.getText()), Integer.parseInt(tFPRAM.getText()));
+			stock.add(laptop);
 			break;
 		case "Sobremesa":
 			System.out.println("Guardando Sobremesa [SaveData]");
-			Ordenador pc = new Ordenador();
+			Ordenador pc = new Ordenador( stock.size()+1, tFSSN.getText(), tFMarca.getText(), tFModelo.getText(), tAComentario.getText(), Integer.parseInt(tFSHDD.getText()), Integer.parseInt(tFSRAM.getText()));
+			stock.add(pc);
 			break;
 		case "Pantalla":
 			System.out.println("Guardando Pantalla [SaveData]");
-			Pantalla screen = new Pantalla();
+			//Pantalla screen = new Pantalla( stock.size()+1,);
 			break;
 		case "All in One":
 			System.out.println("Guardando AllinOne [SaveData]");
@@ -514,12 +522,20 @@ public class EntradaWindow extends JFrame {
 			break;
 		case "Firewall":
 			System.out.println("Guardando Firewall [SaveData]");
-			Firewall fw = new Firewall();
+			boolean tiny;
+			if(cBFw.getSelectedIndex() == 0) {
+				tiny = true;
+			} else {
+				tiny = false;
+			}
+			Firewall fw = new Firewall( stock.size()+1, tFFSN.getText(), tFMarca.getText(), tFModelo.getText(), tAComentario.getText(), tiny);
+			stock.add(fw);
 			break;
 		default:
 			System.out.println("Opción no contemplada en este switch [SaveData]");
 			break;
 		}
+		
 	}
 	
 	/*

@@ -10,14 +10,14 @@ public class Firewall extends Material{
 	}
 	
 	// Constructor con parámetros
-	public Firewall(int id, String type, String sn, String brand, String model, String comments, boolean tiny) {
+	public Firewall(int id, String sn, String brand, String model, String comments, boolean tiny) {
 		super.setId(id);
-		super.setTipo(type);
 		super.setSn(sn);
 		super.setMarca(brand);
 		super.setModelo(model);
 		super.setComentarios(comments);
 		setSmall(tiny);
+		super.setTipo("Firewall");
 	}
 	
 	// Getters y Setters
