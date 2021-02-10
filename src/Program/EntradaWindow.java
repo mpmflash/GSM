@@ -54,6 +54,7 @@ public class EntradaWindow extends JFrame {
 	private JTextField tFSHDD;
 	private JTextField tFSRAM;
 	// pCPantalla
+	private JTextField tFPnSN;
 	private JComboBox cBTamanyo;
 	// pCAllinone
 	private JTextField tFASN;
@@ -354,11 +355,16 @@ public class EntradaWindow extends JFrame {
 		pCPantalla.setLayout(fLayout);
 		pCPantalla.setBorder(BorderFactory.createTitledBorder(" Agregando Pantalla "));
 		
+		JLabel lblPnSN = new JLabel("SN");
+		tFPnSN = new JTextField();
+		tFPnSN.setColumns(25);
 		JLabel lblTamanyo = new JLabel("Tamaño");
 		cBTamanyo = new JComboBox();
 		cBTamanyo.addItem("21");
 		cBTamanyo.addItem("24");
 		//Agregamos los objetos creados al panel
+		pCPantalla.add(lblPnSN);
+		pCPantalla.add(tFPnSN);
 		pCPantalla.add(lblTamanyo);
 		pCPantalla.add(cBTamanyo);
 	}
@@ -510,15 +516,24 @@ public class EntradaWindow extends JFrame {
 			break;
 		case "Pantalla":
 			System.out.println("Guardando Pantalla [SaveData]");
-			//Pantalla screen = new Pantalla( stock.size()+1,);
+			int inch = 0;
+			if(cBTamanyo.getSelectedIndex() == 0) {
+				inch = 21;
+			}else {
+				inch = 24;
+			}
+			Pantalla screen = new Pantalla( stock.size()+1, tFPnSN.getText(), tFMarca.getText(), tFModelo.getText(), tAComentario.getText(), inch);
+			stock.add(screen);
 			break;
 		case "All in One":
 			System.out.println("Guardando AllinOne [SaveData]");
-			Allinone aio = new Allinone();
+			Allinone aio = new Allinone( stock.size()+1, tFASN.getText(), tFMarca.getText(), tFModelo.getText(), tAComentario.getText(), Integer.parseInt(tFAHDD.getText()), Integer.parseInt(tFARAM.getText()));
+			stock.add(aio);
 			break;
 		case "TPV":
 			System.out.println("Guardando TPV [SaveData]");
-			Tpv tpv = new Tpv();
+			Tpv tpv = new Tpv( stock.size()+1, tFTSN.getText(), tFMarca.getText(), tFModelo.getText(), tAComentario.getText(), Integer.parseInt(tFTHDD.getText()), Integer.parseInt(tFTRAM.getText()));
+			stock.add(tpv);
 			break;
 		case "Firewall":
 			System.out.println("Guardando Firewall [SaveData]");

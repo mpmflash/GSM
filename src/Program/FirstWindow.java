@@ -291,10 +291,10 @@ public class FirstWindow extends JFrame{
 		Ordenador pc1 = new Ordenador(listaStock.size()+1,"PCEUIRF01","HP","EliteDesk G5","PC de prueba1", 400, 16);
 		listaStock.add(pc1);
 		
-		Allinone all1 = new Allinone(listaStock.size()+1,"Allinone","QWDDIWRS23","HP","EliteOne", "Allinone de prueba1", 480, 16);
+		Allinone all1 = new Allinone(listaStock.size()+1,"QWDDIWRS23","HP","EliteOne", "Allinone de prueba1", 480, 16);
 		listaStock.add(all1);
 		
-		Tpv tpv1 = new Tpv(listaStock.size()+1,"Tpv","QDXCBRS23","HP","TouchPc", "TPV de Bar test", 240, 8);
+		Tpv tpv1 = new Tpv(listaStock.size()+1,"QDXCBRS23","HP","TouchPc", "TPV de Bar test", 240, 8);
 		listaStock.add(tpv1);
 		
 		Pantalla screen21 = new Pantalla(listaStock.size()+1, "XZOSFH", "HP","E221", "Pantalla de 21 test", 21);
