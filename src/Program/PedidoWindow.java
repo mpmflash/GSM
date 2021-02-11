@@ -3,6 +3,8 @@ package Program;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -124,6 +126,8 @@ public class PedidoWindow extends JFrame {
 		cBProducto.addItem("Portatil");
 		cBProducto.addItem("Pantalla 21");
 		cBProducto.addItem("Pantalla 24");
+		cBProducto.addItem("Allinone");
+		cBProducto.addItem("Tpv");
 		cBProducto.addItem("Fw grande");
 		cBProducto.addItem("Fw pequeño");
 		pMaterial.add(cBProducto);
@@ -164,8 +168,19 @@ public class PedidoWindow extends JFrame {
 		bRealizarPedido = new JButton("Realizar pedido");
 		pObservaciones.add(bRealizarPedido);
 		bCancelarPedido = new JButton("Cancelar pedido");
+		bCancelarPedido.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				closeWindow();	
+			}
+		});
 		pObservaciones.add(bCancelarPedido);
 		
+	}
+	
+	// closeWindow();
+	private void closeWindow() {
+		this.dispose();
 	}
 	
 }

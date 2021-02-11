@@ -503,7 +503,6 @@ public class EntradaWindow extends JFrame {
 	 */
 	private void saveData(String producto) {
 		switch(producto) {
-		// TO-DO - Probar agregando un portátil
 		case "Portátil":
 			System.out.println("Guardando Portátil [SaveData]");
 			Portatil laptop = new Portatil(stock.size()+1, tFPSN.getText(), tFMarca.getText(), tFModelo.getText(), tAComentario.getText(), Integer.parseInt(tFPHDD.getText()), Integer.parseInt(tFPRAM.getText()));

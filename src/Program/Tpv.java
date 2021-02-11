@@ -20,7 +20,7 @@ public class Tpv extends Material{
 		super.setComentarios(comments);
 		this.hdd = hdd;
 		this.ram = ram;
-		super.setTipo("TPV");
+		super.setTipo("Tpv");
 	}
 	// Getters y Setters
 
