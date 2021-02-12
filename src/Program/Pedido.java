@@ -81,7 +81,7 @@ public class Pedido {
 	 * Método con el que añadimos un material a la lista de Pedido
 	 * 
 	 */
-	private void addMaterial( Material mat) {
+	public void addMaterial( Material mat) {
 		lstMatPed.add(mat);
 	}
 }

@@ -183,6 +183,54 @@ public class PedidoWindow extends JFrame {
 		
 	}
 	
+	// addPedido();
+	private void addPedido() {
+		Material mat = new Material();
+		switch(cBProducto.getSelectedIndex()) {
+		case 0:
+			Portatil laptop = new Portatil();
+			mat = (Material)laptop;
+			break;
+		case 1:
+			Ordenador pc = new Ordenador();
+			mat = (Material)pc;
+			break;
+		case 2:
+			Pantalla screen21 = new Pantalla();
+			screen21.setPulgadas(21);
+			mat = (Material)screen21;
+			break;
+		case 3:
+			Pantalla screen24 = new Pantalla();
+			screen24.setPulgadas(24);
+			mat = (Material)screen24;
+			break;
+		case 4:
+			Allinone allinone = new Allinone();
+			mat = (Material)allinone;
+			break;
+		case 5:
+			Tpv tpv = new Tpv();
+			mat = (Material)tpv;
+			break;
+		case 6:
+			Firewall fwsmall = new Firewall();
+			fwsmall.setSmall(true);
+			mat = (Material)fwsmall;
+			break;
+		case 7:
+			Firewall fwbig = new Firewall();
+			fwbig.setSmall(false);
+			mat = (Material)fwbig;
+			break;
+		default:
+			System.out.println("Aquí no debería entrar el programa [Material del Pedido]");
+			break;
+		}
+		Pedido pedido = new Pedido(tFPersona.getText(), tFDestino.getText(), tFAutorizado.getText(), tFTecnico.getText(), tAObservaciones.getText());
+		pedido.addMaterial(mat);
+	}
+	
 	// closeWindow();
 	private void closeWindow() {
 		this.dispose();
