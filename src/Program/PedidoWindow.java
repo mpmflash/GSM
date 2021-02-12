@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -17,6 +18,9 @@ import javax.swing.JComboBox;
 
 public class PedidoWindow extends JFrame {
 	// Atributos de la clase
+	// Arrays necesarias:
+	private ArrayList<Pedido> lstPedido;
+	
 	// JPanels
 	private JPanel pNPedido;
 	private JPanel pCenter;
@@ -45,7 +49,7 @@ public class PedidoWindow extends JFrame {
 	private JButton bCancelarPedido;
 	
 	// Constructor vacío
-	public PedidoWindow() {
+	public PedidoWindow(ArrayList<Pedido> lstPedido) {
 		// Preparamos la ventana
 		this.setTitle("GSM - Pedido de Material");
 		this.setSize(400,300); //Tamaño de la ventana
@@ -53,6 +57,7 @@ public class PedidoWindow extends JFrame {
 		getContentPane().setLayout(new BorderLayout());
 		this.setVisible(true);
 		// Iniciamos los diferentes paneles en métodos para limpiar el cuerpo de la clase
+		this.lstPedido = lstPedido;
 		initPanelpNPedido();
 		initPanelpDatos();
 		initPanelpMaterial();

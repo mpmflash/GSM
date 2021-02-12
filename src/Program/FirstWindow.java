@@ -123,7 +123,7 @@ public class FirstWindow extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Has pulsado el botón Pedido");
-				PedidoWindow pedidoMaterial = new PedidoWindow();
+				PedidoWindow pedidoMaterial = new PedidoWindow(lstPedido);
 				refreshLblMaterial();
 			}
 			
