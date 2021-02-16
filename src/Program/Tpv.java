@@ -8,7 +8,7 @@ public class Tpv extends Material{
 	
 	// Constructor vacío
 	public Tpv() {
-		// VOID
+		super.setTipo("Tpv");
 	}
 	
 	// Constructor con parámetros

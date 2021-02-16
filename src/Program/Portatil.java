@@ -8,7 +8,7 @@ public class Portatil extends Material{
 	
 	// Constructor vacío
 	public Portatil() {
-		// VOID
+		super.setTipo("Portatil");
 	}
 	
 	// Constructor con parámetros

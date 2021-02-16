@@ -8,7 +8,7 @@ public class Allinone extends Material{
 	
 	// Constructor vacío
 	public Allinone() {
-		// VOID
+		super.setTipo("Allinone");
 	}
 	
 	// Constructor con parámetros

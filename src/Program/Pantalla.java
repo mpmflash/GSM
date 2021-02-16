@@ -6,7 +6,11 @@ public class Pantalla extends Material{
 	private int pulgadas;
 	// Constructor vacío
 	public Pantalla() {
-		
+		super.setTipo("Pantalla");
+	}
+	public Pantalla(int inch) {
+		super.setTipo("Pantalla");
+		this.setPulgadas(inch);
 	}
 	
 	// Constructor con parámetros

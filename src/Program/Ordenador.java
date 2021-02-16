@@ -8,7 +8,7 @@ public class Ordenador extends Material{
 	
 	// Constructor vacío
 	public Ordenador() {
-		// VOID
+		super.setTipo("Ordenador");
 	}
 	
 	// Constructor con parámetros

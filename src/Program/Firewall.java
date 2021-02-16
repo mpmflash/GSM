@@ -6,7 +6,12 @@ public class Firewall extends Material{
 	private boolean small;
 	// Constructor vacío
 	public Firewall() {
-		// VOID
+		super.setTipo("Firewall");
+	}
+	
+	public Firewall(boolean small) {
+		super.setTipo("Firewall");
+		this.setSmall(small);
 	}
 	
 	// Constructor con parámetros

@@ -127,8 +127,8 @@ public class PedidoWindow extends JFrame {
 		JLabel lblProducto = new JLabel("Producto");
 		pMaterial.add(lblProducto);
 		cBProducto = new JComboBox();
-		cBProducto.addItem("Pc");
 		cBProducto.addItem("Portatil");
+		cBProducto.addItem("Pc");
 		cBProducto.addItem("Pantalla 21");
 		cBProducto.addItem("Pantalla 24");
 		cBProducto.addItem("Allinone");
@@ -139,6 +139,13 @@ public class PedidoWindow extends JFrame {
 		
 		// Botones
 		bAnadir = new JButton("Añadir");
+		bAnadir.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				addPedido();
+			}
+			
+		});
 		pMaterial.add(bAnadir);
 		
 		bEliminar = new JButton("Eliminar");
@@ -227,8 +234,10 @@ public class PedidoWindow extends JFrame {
 			System.out.println("Aquí no debería entrar el programa [Material del Pedido]");
 			break;
 		}
+		//System.out.println(cBProducto.getSelectedIndex());
 		Pedido pedido = new Pedido(tFPersona.getText(), tFDestino.getText(), tFAutorizado.getText(), tFTecnico.getText(), tAObservaciones.getText());
 		pedido.addMaterial(mat);
+		System.out.println("Se ha añadido al pedido "+ mat.getTipo());
 	}
 	
 	// closeWindow();

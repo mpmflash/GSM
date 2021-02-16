@@ -18,7 +18,7 @@ public class Pedido {
 	}
 	// Constructor pasándole datos
 	public Pedido( String usuario, String destino, String aprobacion, String gestor, String obs ) {
-		
+		lstMatPed = new ArrayList<Material>();
 		this.destinatario = usuario;
 		this.destino = destino;
 		this.autorizacion = aprobacion;
