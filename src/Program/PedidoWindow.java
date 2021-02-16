@@ -149,6 +149,13 @@ public class PedidoWindow extends JFrame {
 		pMaterial.add(bAnadir);
 		
 		bEliminar = new JButton("Eliminar");
+		bEliminar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				borrarLastMat();
+			}
+			
+		});
 		pMaterial.add(bEliminar);
 		
 		// Los diferentes objetos que se elijan
@@ -236,8 +243,18 @@ public class PedidoWindow extends JFrame {
 		}
 		//System.out.println(cBProducto.getSelectedIndex());
 		Pedido pedido = new Pedido(tFPersona.getText(), tFDestino.getText(), tFAutorizado.getText(), tFTecnico.getText(), tAObservaciones.getText());
+		lstPedido.add(pedido);
 		pedido.addMaterial(mat);
+		JLabel lblNuevoMat = new JLabel(mat.getTipo());
+		pMaterial.add(lblNuevoMat);
+		pMaterial.updateUI();
 		System.out.println("Se ha añadido al pedido "+ mat.getTipo());
+	}
+	
+	private void borrarLastMat(){
+		lstPedido.get(lstPedido.size()-1).removeMaterial();
+		System.out.println("Eliminando el último material añadido");
+		// Falta eliminar el JLabel ... para que no aparezca en el pMaterial
 	}
 	
 	// closeWindow();

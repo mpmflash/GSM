@@ -84,4 +84,12 @@ public class Pedido {
 	public void addMaterial( Material mat) {
 		lstMatPed.add(mat);
 	}
+	
+	/*
+	 * removeMaterial();
+	 * 
+	 */
+	public void removeMaterial() {
+		lstMatPed.remove(lstMatPed.size()-1);
+	}
 }
