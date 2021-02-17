@@ -14,7 +14,7 @@ public class Pedido {
 	
 	// Constructor vacío
 	public Pedido() {
-		// VOID
+		lstMatPed = new ArrayList<Material>();
 	}
 	// Constructor pasándole datos
 	public Pedido( String usuario, String destino, String aprobacion, String gestor, String obs ) {
@@ -88,8 +88,20 @@ public class Pedido {
 	/*
 	 * removeMaterial();
 	 * 
+	 * @param void
+	 * @return void
 	 */
 	public void removeMaterial() {
 		lstMatPed.remove(lstMatPed.size()-1);
+	}
+	
+	/*
+	 * countMaterial();
+	 * Devuelve la cantidad de material almacenado en la Array
+	 * @param void
+	 * @return int
+	 */
+	public int countMaterial() {		
+		return lstMatPed.size();
 	}
 }

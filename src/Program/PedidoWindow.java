@@ -21,6 +21,9 @@ public class PedidoWindow extends JFrame {
 	// Arrays necesarias:
 	private ArrayList<Pedido> lstPedido;
 	
+	// Pedido:
+	private Pedido pedido;
+	
 	// JPanels
 	private JPanel pNPedido;
 	private JPanel pCenter;
@@ -42,6 +45,7 @@ public class PedidoWindow extends JFrame {
 	private JComboBox cBProducto;
 	private JButton bAnadir;
 	private JButton bEliminar;
+	//private ArrayList<JLabel> lstLblLastMat;
 	
 	// pObservaciones
 	private JTextArea tAObservaciones;
@@ -58,6 +62,9 @@ public class PedidoWindow extends JFrame {
 		this.setVisible(true);
 		// Iniciamos los diferentes paneles en métodos para limpiar el cuerpo de la clase
 		this.lstPedido = lstPedido;
+		//lstLblLastMat = new ArrayList<JLabel>();
+		pedido = new Pedido();
+		
 		initPanelpNPedido();
 		initPanelpDatos();
 		initPanelpMaterial();
@@ -142,7 +149,7 @@ public class PedidoWindow extends JFrame {
 		bAnadir.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				addPedido();
+				addMaterial();
 			}
 			
 		});
@@ -198,7 +205,7 @@ public class PedidoWindow extends JFrame {
 	}
 	
 	// addPedido();
-	private void addPedido() {
+	private void addMaterial() {
 		Material mat = new Material();
 		switch(cBProducto.getSelectedIndex()) {
 		case 0:
@@ -242,19 +249,40 @@ public class PedidoWindow extends JFrame {
 			break;
 		}
 		//System.out.println(cBProducto.getSelectedIndex());
+		/* Estas dos líneas, se tienen que poner cuando guarde el pedido, al fin de hacerlo efectivo
 		Pedido pedido = new Pedido(tFPersona.getText(), tFDestino.getText(), tFAutorizado.getText(), tFTecnico.getText(), tAObservaciones.getText());
 		lstPedido.add(pedido);
+		*/
 		pedido.addMaterial(mat);
-		JLabel lblNuevoMat = new JLabel(mat.getTipo());
-		pMaterial.add(lblNuevoMat);
+		JLabel lblLastMat = new JLabel(mat.getTipo());
+		//lstLblLastMat.add(lblLastMat);
+		pMaterial.add(lblLastMat);
 		pMaterial.updateUI();
+		System.out.println(pMaterial.getComponentCount());
 		System.out.println("Se ha añadido al pedido "+ mat.getTipo());
 	}
 	
+	/*
+	 * borrarLastMat();
+	 * Elimina el último material añadido al pedido
+	 * ¡¡ De momento solo soy capaz de eliminar 1, 2 seguidos falla !!
+	 * @param void
+	 * @return void
+	 */
 	private void borrarLastMat(){
-		lstPedido.get(lstPedido.size()-1).removeMaterial();
-		System.out.println("Eliminando el último material añadido");
-		// Falta eliminar el JLabel ... para que no aparezca en el pMaterial
+		try {
+			pMaterial.remove(pMaterial.getComponentCount()-1);
+			System.out.println(pMaterial.getComponentCount());
+			//lstPedido.get(lstPedido.size()-1).removeMaterial(); -- El error lo estoy teniendo todo el rato en esta línea!! No en la de eliminar los JLabels!!
+			System.out.println("Eliminando el último material añadido");
+			// Falta eliminar el JLabel ... para que no aparezca en el pMaterial
+			// Con este código, puedo eliminar tan solo, un JLabel, pero no dos seguidos
+			pMaterial.updateUI();
+		}catch(ArrayIndexOutOfBoundsException aIOOBE) {
+			System.err.println("No puedes eliminar más materiales");
+			System.out.println(pMaterial.getComponentCount()-1);
+		}
+		
 	}
 	
 	// closeWindow();
