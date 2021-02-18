@@ -29,6 +29,8 @@ public class PedidoWindow extends JFrame {
 	private JPanel pCenter;
 	private JPanel pDatos;
 	private JPanel pMaterial;
+	private JPanel pBtnMaterial;
+	private JPanel pMatPedido;
 	private JPanel pObservaciones;
 	
 	// Zonas de la ventana:
@@ -41,11 +43,13 @@ public class PedidoWindow extends JFrame {
 	private JTextField tFAutorizado;
 	private JTextField tFTecnico;
 	
-	// pMaterial
+	// pBtnMaterial
 	private JComboBox cBProducto;
 	private JButton bAnadir;
 	private JButton bEliminar;
 	//private ArrayList<JLabel> lstLblLastMat;
+	
+	// pMatPedido
 	
 	// pObservaciones
 	private JTextArea tAObservaciones;
@@ -56,7 +60,7 @@ public class PedidoWindow extends JFrame {
 	public PedidoWindow(ArrayList<Pedido> lstPedido) {
 		// Preparamos la ventana
 		this.setTitle("GSM - Pedido de Material");
-		this.setSize(400,300); //Tamaño de la ventana
+		this.setSize(400,400); //Tamaño de la ventana
 		this.setLocationRelativeTo(null); // Esto hace que se centre la ventana
 		getContentPane().setLayout(new BorderLayout());
 		this.setVisible(true);
@@ -121,18 +125,33 @@ public class PedidoWindow extends JFrame {
 	}
 	
 	/*
-	 * initPanelpMaterial();
-	 * Método para preparar el JPanel pMaterial
+	 * initPMaterial();
+	 * Inicializar los objetos del panel pMaterial
 	 * @param void
 	 * @return void
 	 */
 	private void initPanelpMaterial() {
 		pMaterial = new JPanel();
-		pMaterial.setLayout(new GridLayout(3,5));
+		pMaterial.setLayout(new BorderLayout());
+		initPanelpBtnMaterial();
+		initPanelMatPedido();
 		pMaterial.setBorder(BorderFactory.createTitledBorder("Material"));
+		pMaterial.add( pBtnMaterial, BorderLayout.CENTER);
+		pMaterial.add( pMatPedido, BorderLayout.SOUTH);
+	}
+	
+	/*
+	 * initPanelpBtnMaterial();
+	 * Método para preparar el JPanel pMaterial
+	 * @param void
+	 * @return void
+	 */
+	private void initPanelpBtnMaterial() {
+		pBtnMaterial = new JPanel();
+		pBtnMaterial.setLayout(new GridLayout(3,5));
 		// Producto
 		JLabel lblProducto = new JLabel("Producto");
-		pMaterial.add(lblProducto);
+		pBtnMaterial.add(lblProducto);
 		cBProducto = new JComboBox();
 		cBProducto.addItem("Portatil");
 		cBProducto.addItem("Pc");
@@ -142,7 +161,7 @@ public class PedidoWindow extends JFrame {
 		cBProducto.addItem("Tpv");
 		cBProducto.addItem("Fw grande");
 		cBProducto.addItem("Fw pequeño");
-		pMaterial.add(cBProducto);
+		pBtnMaterial.add(cBProducto);
 		
 		// Botones
 		bAnadir = new JButton("Añadir");
@@ -153,7 +172,7 @@ public class PedidoWindow extends JFrame {
 			}
 			
 		});
-		pMaterial.add(bAnadir);
+		pBtnMaterial.add(bAnadir);
 		
 		bEliminar = new JButton("Eliminar");
 		bEliminar.addActionListener(new ActionListener() {
@@ -163,10 +182,16 @@ public class PedidoWindow extends JFrame {
 			}
 			
 		});
-		pMaterial.add(bEliminar);
-		
-		// Los diferentes objetos que se elijan
-		
+		pBtnMaterial.add(bEliminar);
+	}
+	
+	/*
+	 * initPanelMatPedido();
+	 * Método que iniciará los objetos que pondremos en el panel de Material del pedido
+	 */
+	private void initPanelMatPedido(){
+		pMatPedido = new JPanel();
+		pMatPedido.setLayout(new GridLayout(2,2));
 	}
 	
 	/*
@@ -256,9 +281,9 @@ public class PedidoWindow extends JFrame {
 		pedido.addMaterial(mat);
 		JLabel lblLastMat = new JLabel(mat.getTipo());
 		//lstLblLastMat.add(lblLastMat);
-		pMaterial.add(lblLastMat);
-		pMaterial.updateUI();
-		System.out.println(pMaterial.getComponentCount());
+		pMatPedido.add(lblLastMat);
+		pMatPedido.updateUI();
+		System.out.println(pMatPedido.getComponentCount());
 		System.out.println("Se ha añadido al pedido "+ mat.getTipo());
 	}
 	
@@ -271,16 +296,16 @@ public class PedidoWindow extends JFrame {
 	 */
 	private void borrarLastMat(){
 		try {
-			pMaterial.remove(pMaterial.getComponentCount()-1);
-			System.out.println(pMaterial.getComponentCount());
-			//lstPedido.get(lstPedido.size()-1).removeMaterial(); -- El error lo estoy teniendo todo el rato en esta línea!! No en la de eliminar los JLabels!!
+			pMatPedido.remove(pMatPedido.getComponentCount()-1);
+			System.out.println(pMatPedido.getComponentCount());
+			//lstPedido.get(lstPedido.size()).removeMaterial(); //-- El error lo estoy teniendo todo el rato en esta línea!! No en la de eliminar los JLabels!!
 			System.out.println("Eliminando el último material añadido");
 			// Falta eliminar el JLabel ... para que no aparezca en el pMaterial
 			// Con este código, puedo eliminar tan solo, un JLabel, pero no dos seguidos
-			pMaterial.updateUI();
+			pMatPedido.updateUI();
 		}catch(ArrayIndexOutOfBoundsException aIOOBE) {
 			System.err.println("No puedes eliminar más materiales");
-			System.out.println(pMaterial.getComponentCount()-1);
+			System.out.println(pMatPedido.getComponentCount()-1);
 		}
 		
 	}
