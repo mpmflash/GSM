@@ -20,6 +20,7 @@ public class PedidoWindow extends JFrame {
 	// Atributos de la clase
 	// Arrays necesarias:
 	private ArrayList<Pedido> lstPedido;
+	private ArrayList<Material> lstMatPedido;
 	
 	// Pedido:
 	private Pedido pedido;
@@ -64,11 +65,12 @@ public class PedidoWindow extends JFrame {
 		this.setLocationRelativeTo(null); // Esto hace que se centre la ventana
 		getContentPane().setLayout(new BorderLayout());
 		this.setVisible(true);
-		// Iniciamos los diferentes paneles en métodos para limpiar el cuerpo de la clase
+
 		this.lstPedido = lstPedido;
+		this.lstMatPedido = new ArrayList<Material>();
 		//lstLblLastMat = new ArrayList<JLabel>();
 		pedido = new Pedido();
-		
+	// Iniciamos los diferentes paneles en métodos para limpiar el cuerpo de la clase		
 		initPanelpNPedido();
 		initPanelpDatos();
 		initPanelpMaterial();
@@ -217,6 +219,13 @@ public class PedidoWindow extends JFrame {
 		tAObservaciones = new JTextArea();
 		pObservaciones.add(tAObservaciones, 2,1);
 		bRealizarPedido = new JButton("Realizar pedido");
+		bRealizarPedido.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				realizarPedido();
+			}
+			
+		});
 		pObservaciones.add(bRealizarPedido);
 		bCancelarPedido = new JButton("Cancelar pedido");
 		bCancelarPedido.addActionListener(new ActionListener() {
@@ -282,6 +291,7 @@ public class PedidoWindow extends JFrame {
 		JLabel lblLastMat = new JLabel(mat.getTipo());
 		//lstLblLastMat.add(lblLastMat);
 		pMatPedido.add(lblLastMat);
+		lstMatPedido.add(mat);
 		pMatPedido.updateUI();
 		System.out.println(pMatPedido.getComponentCount());
 		System.out.println("Se ha añadido al pedido "+ mat.getTipo());
@@ -297,6 +307,7 @@ public class PedidoWindow extends JFrame {
 	private void borrarLastMat(){
 		try {
 			pMatPedido.remove(pMatPedido.getComponentCount()-1);
+			lstMatPedido.remove(lstMatPedido.size()-1);
 			System.out.println(pMatPedido.getComponentCount());
 			//lstPedido.get(lstPedido.size()).removeMaterial(); //-- El error lo estoy teniendo todo el rato en esta línea!! No en la de eliminar los JLabels!!
 			System.out.println("Eliminando el último material añadido");
@@ -308,6 +319,17 @@ public class PedidoWindow extends JFrame {
 			System.out.println(pMatPedido.getComponentCount()-1);
 		}
 		
+	}
+	
+	private void realizarPedido() {
+		int idPedido = 0;
+		idPedido = lstPedido.size()+1;
+		Pedido newPedido = new Pedido( tFPersona.getText(), tFDestino.getText(), tFAutorizado.getText(), tFTecnico.getText(), tAObservaciones.getText());
+		newPedido.setId(idPedido);
+		// Agregamos el material que se haya puesto en la ventana       
+		newPedido.setMaterial(lstMatPedido);
+		System.out.println(newPedido.toString());
+		closeWindow();
 	}
 	
 	// closeWindow();

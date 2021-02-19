@@ -7,7 +7,7 @@ public class Pedido {
 	private int id;
 	private ArrayList <Material> lstMatPed;
 	private String destinatario;
-	private String destino;
+	private String dpto;
 	private String autorizacion;
 	private String tecnico;
 	private String observaciones;
@@ -20,7 +20,7 @@ public class Pedido {
 	public Pedido( String usuario, String destino, String aprobacion, String gestor, String obs ) {
 		lstMatPed = new ArrayList<Material>();
 		this.destinatario = usuario;
-		this.destino = destino;
+		this.dpto = destino;
 		this.autorizacion = aprobacion;
 		this.tecnico = gestor;
 		this.observaciones = obs;
@@ -35,6 +35,14 @@ public class Pedido {
 		this.id = id;
 	}
 	
+	// ArrayList<Material>
+	public ArrayList<Material> getMaterial(){
+		return this.lstMatPed;
+	}
+	public void setMaterial(ArrayList<Material> lstMaterial) {
+		this.lstMatPed = lstMaterial;
+	}
+	
 	// Destinatario
 	public String getDestinatario() {
 		return destinatario;
@@ -45,10 +53,10 @@ public class Pedido {
 
 	// Destino
 	public String getDestino() {
-		return destino;
+		return dpto;
 	}
 	public void setDestino(String destino) {
-		this.destino = destino;
+		this.dpto = destino;
 	}
 	
 	// Autorización
@@ -103,5 +111,18 @@ public class Pedido {
 	 */
 	public int countMaterial() {		
 		return lstMatPed.size();
+	}
+	
+	/*
+	 * toString();
+	 * Método que describirá el pedido
+	 * @param void
+	 * @return void
+	 */
+	public String toString() {
+		String descripcion;
+		descripcion = "ID:"+this.id+" Material:"+lstMatPed.size()+"\n Para:"+this.destinatario+"\n Dpto:"+this.dpto+"\n Autorizado:"+this.autorizacion+"\n Tecnico:"+this.tecnico;
+		
+		return descripcion;
 	}
 }
