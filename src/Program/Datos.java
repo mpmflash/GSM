@@ -16,6 +16,7 @@ public class Datos {
 	public Datos(ArrayList<Material> stock) {
 		lstStock = new ArrayList<Material>();
 		lstStock = stock;
+		//initStock(lstStock);
 	}
 	
 	public Datos(ArrayList<Material> stock, ArrayList<Pedido> listaPedido) {
@@ -25,5 +26,23 @@ public class Datos {
 		lstPedido = new ArrayList<Pedido>();
 		lstPedido = listaPedido;
 	}
+	
+	// Getters y Setters
+	
+	public void setMaterialList( ArrayList<Material> lstMat) {
+		lstStock = lstMat;
+	}
+	public ArrayList<Material> getMaterialList(){
+		return lstStock;
+	}
+	
+	public void setPedidoList( ArrayList<Pedido> lstPed) {
+		lstPedido = lstPed;
+	}
+	public ArrayList<Pedido> getPedidoList(){
+		return lstPedido;
+	}
+	
+	// Métodos de la clase
 
 }

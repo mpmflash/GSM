@@ -24,6 +24,7 @@ import java.awt.GridLayout;
 public class FirstWindow extends JFrame{
 	
 	// Atributos de la clase
+	private Datos datos;
 	private ArrayList<Material> lstStock;
 	private ArrayList<Pedido> lstPedido;
 	//private ArrayList<> lstEntrega;
@@ -88,8 +89,10 @@ public class FirstWindow extends JFrame{
 		
 		// Inicializamos ArrayList
 		lstStock = new ArrayList<Material>();
-		initStock(lstStock);
 		lstPedido = new ArrayList<Pedido>();
+		initStock(lstStock);
+		//Datos datos = new Datos(lstStock, lstPedido);
+		
 		
 		// Configurando panel Menú Material
 		pMenuMaterial = new JPanel();
@@ -275,6 +278,7 @@ public class FirstWindow extends JFrame{
 		pLastEntregas.add(tPLastMoves);
 	}
 	// Métodos de la clase
+	
 	/*
 	 * initStock()
 	 * Método que usaremos para tener material de prueba
@@ -326,7 +330,9 @@ public class FirstWindow extends JFrame{
 	private int countMaterial(String tipo) {
 		int x= 0;
 		System.out.println("Buscando en la array: "+tipo);
-		for(Material lista: lstStock) {
+		ArrayList<Material> pqNoFunciona = new ArrayList<Material>();
+		System.out.println(pqNoFunciona.size());
+		for(Material lista: lstStock ) {
 			if(lista.getTipo() == tipo) {
 				x++;
 			}
