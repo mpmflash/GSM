@@ -47,7 +47,7 @@ public class FirstWindow extends JFrame{
 	// PMenuMaterial:
 	private JButton btnEntrada;
 	private JButton btnPedido;
-	private JButton btnSalida;
+	private JButton btnEntrega;
 	private JButton btnAlmacen;
 	private JButton btnPrestamo;
 	private JButton btnActualizar;
@@ -132,15 +132,15 @@ public class FirstWindow extends JFrame{
 			
 		});
 		pMenuMaterial.add(btnPedido, cBtnPedido);
-		// Botón salida
+		// Botón Entrega
 		GridBagConstraints cBtnSalida = new GridBagConstraints(); 
-		btnSalida = new JButton("Salida");
+		btnEntrega = new JButton("Entrega");
 		cBtnSalida.gridx = 0;
 		cBtnSalida.gridy = 2;
 		cBtnSalida.fill = GridBagConstraints.HORIZONTAL;
 		cBtnSalida.insets = new Insets(0, 0, 5, 0);
-		pMenuMaterial.add(btnSalida, cBtnSalida);
-		// Botón Almacén
+		pMenuMaterial.add(btnEntrega, cBtnSalida);
+		// Botón Almacén - Qué hace este botón?
 		btnAlmacen = new JButton("Almacén");
 		GridBagConstraints cBtnAlmacen = new GridBagConstraints();
 		cBtnAlmacen.gridx = 0;
@@ -148,7 +148,7 @@ public class FirstWindow extends JFrame{
 		cBtnAlmacen.fill = GridBagConstraints.HORIZONTAL;
 		cBtnAlmacen.insets = new Insets(0, 0, 5, 0);
 		pMenuMaterial.add(btnAlmacen, cBtnAlmacen);
-		// Botón Préstamos
+		// Botón Préstamos - Gestionar una cartera de material de préstamo
 		btnPrestamo = new JButton("Préstamo");
 		GridBagConstraints cBtnPrestamo = new GridBagConstraints();
 		cBtnPrestamo.gridx = 0;
@@ -332,7 +332,7 @@ public class FirstWindow extends JFrame{
 		System.out.println("Buscando en la array: "+tipo);
 		ArrayList<Material> pqNoFunciona = new ArrayList<Material>();
 		System.out.println(pqNoFunciona.size());
-		for(Material lista: lstStock ) {
+		for( Material lista: lstStock ) {
 			if(lista.getTipo() == tipo) {
 				x++;
 			}
@@ -349,7 +349,7 @@ public class FirstWindow extends JFrame{
 	private int countMaterial(String tipo, int inch) {
 		int x= 0;
 		System.out.println("Buscando en la array: "+tipo);
-		for(Material lista: lstStock) {	
+		for( Material lista: lstStock ) {	
 			if(lista.getTipo() == "Pantalla") {
 				if(((Pantalla) lista).getPulgadas() == inch) {
 					x++;
@@ -368,7 +368,7 @@ public class FirstWindow extends JFrame{
 	private int countMaterial(String tipo, boolean small) {
 		int x= 0;
 		System.out.println("Buscando en la array: "+tipo);
-		for(Material lista: lstStock) {	
+		for( Material lista: lstStock ) {	
 			if(lista.getTipo() == "Firewall") {
 				if(((Firewall) lista).isSmall() == small) {
 					x++;

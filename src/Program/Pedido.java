@@ -6,6 +6,7 @@ public class Pedido {
 	// Atributos 
 	private int id;
 	private ArrayList <Material> lstMatPed;
+	private boolean[] recibido;
 	private String destinatario;
 	private String dpto;
 	private String autorizacion;
@@ -15,10 +16,12 @@ public class Pedido {
 	// Constructor vacío
 	public Pedido() {
 		lstMatPed = new ArrayList<Material>();
+		recibido = new boolean[5];
 	}
 	// Constructor pasándole datos
 	public Pedido( String usuario, String destino, String aprobacion, String gestor, String obs ) {
 		lstMatPed = new ArrayList<Material>();
+		recibido = new boolean[5];
 		this.destinatario = usuario;
 		this.dpto = destino;
 		this.autorizacion = aprobacion;
@@ -87,15 +90,17 @@ public class Pedido {
 	
 	/* addMaterial();
 	 * Método con el que añadimos un material a la lista de Pedido
-	 * 
+	 * @param Material
+	 * @return 
 	 */
 	public void addMaterial( Material mat) {
 		lstMatPed.add(mat);
+		recibido[lstMatPed.size()-1] = false;
 	}
 	
 	/*
 	 * removeMaterial();
-	 * 
+	 * Método que quita un material de la ArrayList
 	 * @param void
 	 * @return void
 	 */
@@ -111,6 +116,16 @@ public class Pedido {
 	 */
 	public int countMaterial() {		
 		return lstMatPed.size();
+	}
+	
+	/*
+	 * changeRecibido();
+	 * Método que cambia de no haber recibido el material a haberlo recibido
+	 * @param void
+	 * @return void
+	 */
+	public void changeRecibido() {
+		// TO-DO
 	}
 	
 	/*

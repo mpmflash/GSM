@@ -24,6 +24,7 @@ import java.util.ArrayList;
 public class EntradaWindow extends JFrame {
 	// Atributos de la clase
 	private ArrayList<Material> stock;
+	private ArrayList<Pedido> pedidos;
 	// Diferentes JPanels para los diferentes tipos de material
 	private JPanel pNorte;
 	private JPanel pCPortatil;
@@ -81,6 +82,7 @@ public class EntradaWindow extends JFrame {
 		getContentPane().setLayout(new BorderLayout());
 		// Inicializamos las listas para poderlas utilizar
 		stock = lstMat;
+		pedidos = lstPed;
 		// Iniciamos los diferentes paneles en métodos para limpiar el cuerpo de la clase
 		initPortatilPane();
 		initSobremesaPane();
@@ -185,12 +187,16 @@ public class EntradaWindow extends JFrame {
 		gbc_lblPedido.gridx = 2;
 		gbc_lblPedido.gridy = 6;
 		pNorte.add(lblPedido, gbc_lblPedido);
-		// Ponemos el Combobox de pedido
+		// Ponemos el Combobox de pedido - Falta que aparezcan los diferentes pedidos que haya abiertos
 		cBPedido = new JComboBox();
 		GridBagConstraints gbc_cBPedido = new GridBagConstraints();
 		gbc_cBPedido.gridx = 3;
 		gbc_cBPedido.gridy = 6;
 		cBPedido.addItem("Stock");
+		// Agregar como posibilidades los pedidos
+		for(Pedido pedido : pedidos) {
+			cBPedido.addItem(pedido.getMaterial().get(0));
+		}
 		pNorte.add(cBPedido, gbc_cBPedido);
 		
 		
@@ -477,8 +483,13 @@ public class EntradaWindow extends JFrame {
 		bGuardar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				saveData( cBProducto.getSelectedItem().toString() );
-				System.out.println("Se ha guardado el material correctamente");
+				if(cBPedido.getSelectedIndex() == 0) {
+					saveData( cBProducto.getSelectedItem().toString() );
+					System.out.println("Se ha guardado el material correctamente");
+				} else {
+					//TO-DO Faltaría un método para actualizar el pedido con el material que ha llegado
+					System.out.println("El "+cBProducto.getSelectedItem().toString() +" se ha asignado al pedido PED-"+cBPedido.getSelectedItem().toString());
+				}
 				closeWindow();
 			}
 		});
